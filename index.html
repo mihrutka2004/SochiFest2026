@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru" class="scroll-smooth scroll-pt-24">
 <head>
     <meta charset="UTF-8">
@@ -85,6 +85,68 @@
             white-space: nowrap;
             border-width: 0;
         }
+
+        /* Мягкая пульсация для иконок */
+        @keyframes softPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .icon-soft-pulse {
+            animation: softPulse 4s ease-in-out infinite;
+        }
+
+        /* Стили для модального окна lightbox */
+        .lightbox {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.hidden {
+            display: none;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .lightbox-close:hover {
+            color: #00a1e3;
+        }
     </style>
 </head>
 <body class="bg-brand-surface text-brand-dark font-sans leading-relaxed text-lg selection:bg-brand-blue selection:text-white">
@@ -99,24 +161,24 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-extrabold tracking-tight text-brand-blueDark flex items-center gap-2 group">
                 <span class="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
-                    <i class="fa-solid fa-water" aria-hidden="true"></i>
+                    <i class="fa-solid fa-water icon-soft-pulse" aria-hidden="true"></i>
                 </span>
                 <span>Инклюзив Дэнс</span>
             </a>
             
             <!-- Десктоп меню -->
-            <ul class="hidden lg:flex space-x-1 font-medium text-sm text-gray-600">
+            <ul class="hidden lg:flex space-x-1 font-medium text-lg text-gray-600">
                 <li><a href="#about" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">О фестивале</a></li>
-                <!-- Обе ссылки ведут на единый блок -->
+                <!-- Обе  ссылки ведут на единый блок -->
                 <li><a href="#program" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">Программа</a></li>
-                <li><a href="#applications" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">Заявки</a></li>
-                <li><a href="#finance" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">Условия</a></li>
-                <li><a href="#contacts" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">Контакты</a></li>
+                <li><a href="#participation-conditions" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">Условия</a></li>
+                <li><a href="#faq" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">FAQ</a></li>
+                <li><a href="#org-committee-contacts" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">Контакты</a></li>
             </ul>
 
             <div class="hidden lg:block">
-                 <a href="#applications" class="bg-brand-dark text-white hover:bg-black px-5 py-2.5 rounded-full text-sm font-semibold transition transform hover:scale-105">
-                    Регистрация
+                 <a href="#applications" class="bg-brand-pink text-white hover:bg-brand-pinkDark px-5 py-2.5 rounded-full text-lg font-semibold transition transform hover:scale-105">
+                    Подать заявки
                  </a>
             </div>
 
@@ -131,8 +193,9 @@
             <ul class="flex flex-col p-6 space-y-4 font-semibold text-gray-800 text-lg">
                 <li><a href="#about" class="block hover:text-brand-pink">О фестивале</a></li>
                 <li><a href="#program" class="block hover:text-brand-pink">Программа и Заявки</a></li>
-                <li><a href="#finance" class="block hover:text-brand-pink">Финансы</a></li>
-                <li><a href="#contacts" class="block hover:text-brand-pink">Контакты</a></li>
+                <li><a href="#participation-conditions" class="block hover:text-brand-pink">Условия</a></li>
+                <li><a href="#faq" class="block hover:text-brand-pink">FAQ</a></li>
+                <li><a href="#org-committee-contacts" class="block hover:text-brand-pink">Контакты</a></li>
             </ul>
         </div>
     </nav>
@@ -142,8 +205,8 @@
         <section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
             <!-- Фон -->
             <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
-                     alt="Силуэты людей на фоне морского заката" 
+                <img src="ШколаИТ.jpg"
+                     alt="СочиФест"
                      class="w-full h-full object-cover">
                 <!-- Современный градиент -->
                 <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-brand-blueDark/40 to-brand-dark/80 mix-blend-multiply"></div>
@@ -151,8 +214,8 @@
             </div>
 
             <div class="relative z-10 container mx-auto px-6 text-center lg:text-left pt-20">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium text-sm mb-6 uppercase tracking-wider shadow-lg">
-                    <span class="w-2 h-2 rounded-full bg-brand-pink animate-pulse"></span>
+                <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-brand-pink backdrop-blur-md border border-brand-pink/30 text-white font-bold text-xl mb-6 uppercase tracking-wider shadow-xl">
+                    <span class="w-3 h-3 rounded-full bg-white animate-pulse"></span>
                     Южный Федеральный Округ
                 </div>
                 
@@ -165,72 +228,70 @@
                     Инклюзив Дэнс Сочи. Погрузитесь в атмосферу творчества и дружбы на берегу Черного моря.
                 </p>
                 
-                <div class="flex flex-col md:flex-row gap-8 items-center md:items-start text-lg font-medium text-white/90 mb-12">
-                    <div class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-sm border border-white/10">
-                        <i class="fa-regular fa-calendar text-brand-pink text-xl"></i>
-                        <span>15 – 22 Мая 2026</span>
+                <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+                    <!-- Плашки с информацией -->
+                    <div class="flex flex-col gap-4 text-xl font-medium text-white/90">
+                        <div class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all cursor-pointer">
+                            <i class="fa-regular fa-calendar text-brand-pink hover:text-brand-blue text-xl transition-colors"></i>
+                            <span>15 – 22 Мая 2026</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all cursor-pointer">
+                            <i class="fa-solid fa-location-dot text-brand-pink hover:text-brand-blue text-xl transition-colors"></i>
+                            <span>Сочи, пгт. Сириус</span>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-sm border border-white/10">
-                        <i class="fa-solid fa-location-dot text-brand-pink text-xl"></i>
-                        <span>Сочи, Отель «Бархатные Сезоны»</span>
-                    </div>
-                </div>
 
-                <!-- Счетчик времени до фестиваля -->
-                <div class="countdown-timer bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 mb-8 max-w-lg mx-auto lg:mx-0 lg:text-right">
-                    <h3 class="text-lg font-bold text-white mb-3 text-center">До начала фестиваля:</h3>
-                    <div class="grid grid-cols-4 gap-2 text-center">
-                        <div class="bg-white/20 rounded-xl p-2 backdrop-blur-sm">
-                            <div class="text-2xl font-extrabold text-white" id="days">156</div>
-                            <div class="text-xs text-white/80 uppercase tracking-wider">дней</div>
-                        </div>
-                        <div class="bg-white/20 rounded-xl p-2 backdrop-blur-sm">
-                            <div class="text-2xl font-extrabold text-white" id="hours">12</div>
-                            <div class="text-xs text-white/80 uppercase tracking-wider">часов</div>
-                        </div>
-                        <div class="bg-white/20 rounded-xl p-2 backdrop-blur-sm">
-                            <div class="text-2xl font-extrabold text-white" id="minutes">34</div>
-                            <div class="text-xs text-white/80 uppercase tracking-wider">минут</div>
-                        </div>
-                        <div class="bg-white/20 rounded-xl p-2 backdrop-blur-sm">
-                            <div class="text-2xl font-extrabold text-white" id="seconds">56</div>
-                            <div class="text-xs text-white/80 uppercase tracking-wider">секунд</div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <a href="#applications" class="bg-brand-pink hover:bg-brand-pinkDark text-white font-semibold py-4 px-10 rounded-full shadow-lg hover:shadow-brand-pink/50 transition-all transform hover:-translate-y-1 text-center">
-                        Зарегистрироваться
-                    </a>
-                    <a href="#" class="group bg-white/10 hover:bg-white text-white hover:text-brand-dark font-semibold py-4 px-10 rounded-full backdrop-blur-md transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-file-pdf group-hover:text-brand-blue"></i> Положение
-                    </a>
-                </div>
+
+
             </div>
         </section>
 
         <!-- 3. О фестивале (Clean Grid) -->
-        <section id="about" class="py-24 bg-white">
+        <section id="about" class="py-12 bg-white">
             <div class="container mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <h2 class="text-4xl md:text-5xl font-extrabold text-brand-dark mb-8 tracking-tight">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-blue mb-3 tracking-tight">
                             Глубина вашего <span class="text-brand-blue">таланта</span>
                         </h2>
                         <div class="prose prose-lg text-slate-600 leading-loose">
                             <p class="mb-6">
-                                Фестиваль «Море возможностей» — это не просто конкурс. Это профессиональная платформа для развития инклюзивных коллективов. Мы создали условия, где вы сможете совместить интенсивную танцевальную практику с оздоровительным отдыхом.
+                                Межрегиональный инклюзивный танцевальный фестиваль «Инклюзив Дэнс Сочи. Море возможностей» — это не просто конкурс. Это профессиональная платформа для развития инклюзивных коллективов. Мы создали условия, где вы сможете совместить интенсивную танцевальную практику с оздоровительным отдыхом.
                             </p>
+
+                            <!-- Счетчик времени до фестиваля -->
+                            <div class="countdown-timer bg-brand-surface border border-slate-200 rounded-2xl p-4 text-center mb-6">
+                                <h3 class="text-lg font-bold text-brand-dark mb-3 text-center">До начала фестиваля:</h3>
+                                <div class="grid grid-cols-4 gap-2 text-center">
+                                    <div class="bg-white rounded-xl p-2 shadow-sm">
+                                        <div class="text-2xl font-extrabold text-brand-dark" id="days">156</div>
+                                        <div class="text-xs text-slate-600 uppercase tracking-wider">дней</div>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-2 shadow-sm">
+                                        <div class="text-2xl font-extrabold text-brand-dark" id="hours">12</div>
+                                        <div class="text-xs text-slate-600 uppercase tracking-wider">часов</div>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-2 shadow-sm">
+                                        <div class="text-2xl font-extrabold text-brand-dark" id="minutes">34</div>
+                                        <div class="text-xs text-slate-600 uppercase tracking-wider">минут</div>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-2 shadow-sm">
+                                        <div class="text-2xl font-extrabold text-brand-dark" id="seconds">56</div>
+                                        <div class="text-xs text-slate-600 uppercase tracking-wider">секунд</div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <p class="mb-6">
                                 Как море принимает любые реки, так и наш фестиваль открыт для всех, кто готов творить, учиться и преодолевать границы.
                             </p>
                         </div>
 
                         <!-- Предупреждение (Apple Style Alert) -->
-                        <div role="alert" class="mt-10 p-6 bg-brand-surface rounded-3xl border border-slate-200 flex items-start gap-4 shadow-sm">
+                            <div role="alert" class="mt-10 p-6 bg-brand-surface rounded-3xl border border-slate-200 flex items-start gap-4 shadow-sm">
                             <div class="w-12 h-12 rounded-full bg-brand-pink/10 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-exclamation text-brand-pink text-xl"></i>
+                                <i class="fa-solid fa-exclamation text-brand-pink text-xl icon-soft-pulse"></i>
                             </div>
                             <div>
                                 <h3 class="font-bold text-brand-dark text-lg mb-1">Важно для участников</h3>
@@ -239,11 +300,19 @@
                                 </p>
                             </div>
                         </div>
+
+                        <!-- Положение о фестивале -->
+                        <div class="mt-6">
+                            <a href="#" class="w-full inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-blueDark text-white px-6 py-3 rounded-2xl font-semibold transition-all shadow-lg hover:shadow-brand-blue/40">
+                                <i class="fa-solid fa-file-contract"></i>
+                                Положение о фестивале
+                            </a>
+                        </div>
                     </div>
                     <div class="relative group">
                         <div class="absolute -inset-2 bg-gradient-to-r from-brand-blue to-brand-pink rounded-[2.5rem] opacity-20 group-hover:opacity-40 blur-lg transition duration-500"></div>
-                        <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Танцоры в белом" 
+                        <img src="144A7596Арт.jpg"
+                             alt="Танцоры в белом"
                              class="relative rounded-[2rem] shadow-2xl w-full h-auto object-cover aspect-4/3 transform transition duration-500 group-hover:scale-[1.01]">
                     </div>
                 </div>
@@ -251,17 +320,14 @@
         </section>
 
         <!-- 4. Программа и Заявки (Unified Action Timeline) -->
-        <section id="program" class="py-24 bg-brand-surface relative">
+        <section id="program" class="py-12 bg-brand-surface relative">
             <!-- Якорь для второй ссылки из меню, чтобы она тоже работала -->
             <span id="applications" class="absolute -top-24 left-0"></span>
 
             <div class="container mx-auto px-6 max-w-5xl">
                 <!-- Заголовок -->
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-brand-dark mt-2 mb-6 tracking-tight">Программа фестиваля</h2>
-                    <p class="text-slate-500 text-xl max-w-2xl mx-auto">
-                        Внимание: на каждое мероприятие (Школа инклюзивного танца, Парные соревнования по инклюзивному танцу, Конкурс по инклюзивной хореографии) подается отдельная заявка.
-                    </p>
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-dark mt-2 mb-2 tracking-tight">Программа фестиваля</h2>
                 </div>
                 
                 <div class="space-y-6">
@@ -372,11 +438,12 @@
                             </div>
                         </div>
 
-                        <!-- Действие -->
-                        <div class="shrink-0 lg:w-48">
-                            <button onclick="openModal('schoolModal')" class="w-full bg-brand-pink hover:bg-brand-pinkDark text-white font-semibold py-4 px-6 rounded-2xl transition-all shadow-lg hover:shadow-brand-pink/40 text-center" aria-label="Подать заявку на Школу">
+                        <!-- Иллюстрация -->
+                        <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
+                            <img src="ШколаИТ.jpg" alt="Школа инклюзивного танца" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
+                            <a href="#applications" class="w-full bg-brand-pink hover:bg-brand-pinkDark text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-brand-pink/40 text-center text-lg">
                                 Подать заявку
-                            </button>
+                            </a>
                         </div>
                     </article>
 
@@ -400,7 +467,7 @@
                                 <h3 class="text-2xl font-bold text-brand-dark">Парные соревнования по инклюзивному танцу</h3>
                             </div>
                             <p class="text-slate-600 leading-relaxed mb-4 lg:mb-0">
-                                Парные соревнования (баттлы) в формате «здесь и сейчас». Проявите креативность без заготовок.
+                                Парные соревнования в формате «здесь и сейчас». Проявите креативность без заготовок.
                             </p>
                             
                             <!-- Кнопка Подробнее -->
@@ -442,11 +509,12 @@
                             </div>
                         </div>
 
-                        <!-- Действие -->
-                        <div class="shrink-0 lg:w-48">
-                            <button onclick="openModal('battlesModal')" class="w-full bg-brand-blue hover:bg-brand-blueDark text-white font-semibold py-4 px-6 rounded-2xl transition-all shadow-lg hover:shadow-brand-blue/40 text-center" aria-label="Подать заявку на Парные соревнования">
+                        <!-- Иллюстрация -->
+                        <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
+                            <img src="Парные.jpg" alt="Парные соревнования по инклюзивному танцу" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
+                            <a href="#applications" class="w-full bg-brand-blue hover:bg-brand-blueDark text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-brand-blue/40 text-center text-lg">
                                 Подать заявку
-                            </button>
+                            </a>
                         </div>
                     </article>
 
@@ -467,10 +535,10 @@
                                 <div class="w-8 h-8 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink text-sm">
                                     <i class="fa-solid fa-trophy"></i>
                                 </div>
-                                <h3 class="text-2xl font-bold text-brand-dark">Конкурс по инклюзивной хореографии среди дуэтов и коллективов</h3>
+                                <h3 class="text-2xl font-bold text-brand-dark">Конкурс по инклюзивной хореографии</h3>
                             </div>
                             <p class="text-slate-600 leading-relaxed mb-4 lg:mb-0">
-                                Главное событие фестиваля. Конкурс хореографии для дуэтов и коллективов. Оценка жюри и Гала-концерт.
+                                Главное событие фестиваля. Конкурс хореографии для инклюзивных дуэтов и коллективов.
                             </p>
                             
                             <!-- Кнопка Подробнее -->
@@ -510,7 +578,7 @@
                                         </p>
                                     </div>
                                     <div class="space-y-2 text-sm">
-                                        <p>За участие в конкурсе взимается <a href="#finance" class="text-brand-blue hover:text-brand-blueDark font-semibold underline transition">благотворительный взнос</a> в зависимости от номинации, в которой выступает коллектив.</p>
+                                        <p>За участие в конкурсе взимается <a href="#charitable-contribution" class="text-brand-blue hover:text-brand-blueDark font-semibold underline transition">благотворительный взнос</a> в зависимости от номинации, в которой выступает коллектив.</p>
                                         <p>На каждый танцевальный номер подается отдельная заявка. Один коллектив может подать на конкурс не более пяти заявок. Длительность хореографической постановки – не более 4 минут.</p>
                                         <p class="font-semibold text-brand-pink">Срок подачи заявки – c 1 января по 15 апреля 2026 года включительно (до 23:59 по московскому времени).</p>
                                     </div>
@@ -524,11 +592,12 @@
                             </div>
                         </div>
 
-                        <!-- Действие -->
-                        <div class="shrink-0 lg:w-48">
-                            <button onclick="openModal('contestModal')" class="w-full bg-brand-pink hover:bg-brand-pinkDark text-white font-semibold py-4 px-6 rounded-2xl transition-all shadow-lg hover:shadow-brand-pink/40 text-center" aria-label="Подать заявку на Конкурс по инклюзивной хореографии">
+                        <!-- Иллюстрация -->
+                        <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
+                            <img src="Коллективы.jpg" alt="Конкурс по инклюзивной хореографии" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
+                            <a href="#applications" class="w-full bg-brand-pink hover:bg-brand-pinkDark text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-brand-pink/40 text-center text-lg">
                                 Подать заявку
-                            </button>
+                            </a>
                         </div>
                     </article>
 
@@ -536,13 +605,13 @@
                     <article class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col lg:flex-row gap-8 lg:items-center relative overflow-hidden">
                         <!-- Индикатор -->
                         <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand-blue/50 group-hover:bg-brand-blue transition-colors"></div>
-                        
+
                         <!-- Дата -->
                         <div class="shrink-0 flex lg:flex-col items-center gap-3 lg:gap-1 lg:w-32 lg:text-center border-b lg:border-b-0 lg:border-r border-slate-100 pb-4 lg:pb-0 lg:pr-6">
                             <span class="text-4xl font-extrabold text-brand-blue tracking-tighter">22</span>
                             <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Мая</span>
                         </div>
-                        
+
                         <!-- Контент -->
                         <div class="flex-grow">
                             <div class="flex items-center gap-3 mb-2">
@@ -553,44 +622,303 @@
                             </div>
                                 <!-- Описание убрано по запросу пользователя -->
                         </div>
-                        
+
                         <!-- Пустой блок для выравнивания -->
                         <div class="hidden lg:block lg:w-48"></div>
                     </article>
+
+                    <!-- Предупреждение о заявках -->
+                    <div class="mt-8 p-6 bg-gradient-to-r from-blue-50 to-pink-50 rounded-2xl border border-blue-100">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-pink/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-exclamation-triangle text-brand-pink text-xl hover:text-brand-pinkDark transition-colors cursor-pointer"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-brand-dark mb-2">Внимание</h4>
+                                <p class="text-slate-600 leading-relaxed">
+                                    На каждое мероприятие (Школа инклюзивного танца, Парные соревнования по инклюзивному танцу, Конкурс по инклюзивной хореографии) подается отдельная заявка.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- 5. Проживание -->
-        <section id="accommodation" class="py-24 bg-white">
+        <!-- 5. Условия участия -->
+        <section id="participation-conditions" class="py-12 bg-white">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-brand-dark mb-12 tracking-tight">Условия участия</h2>
+
+                <div class="space-y-8">
+                    <!-- Общие условия участия -->
+                    <div class="group bg-gradient-to-r from-brand-blue/5 to-brand-pink/5 p-6 md:p-8 rounded-[2.5rem] border border-brand-blue/10 hover:border-brand-blue/20 transition-all duration-300 hover:shadow-lg">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-info-circle text-brand-blue text-xl icon-soft-pulse"></i>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="space-y-3 text-slate-600 leading-relaxed">
+                                    <p>Иногородние участники за счет <span class="font-semibold text-brand-dark">собственных средств</span> или <span class="font-semibold text-brand-dark">командирующей стороны</span> оплачивают дорогу до Сочи и обратно, а также проживание и питание во время завершающих мероприятий фестиваля.</p>
+                                    <p>Проживание иногородних участников возможно <span class="font-semibold text-brand-pink">только в официальном объекте размещения</span>. Бронирование номеров только через Оргкомитет фестиваля.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Размещение участников -->
+                    <div class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 relative overflow-hidden">
+                        <!-- Индикатор -->
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand-blue/50 group-hover:bg-brand-blue transition-colors"></div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center">
+                                <i class="fa-solid fa-hotel text-brand-blue icon-soft-pulse"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-brand-dark">Размещение участников</h3>
+                        </div>
+                        <div class="space-y-3 text-slate-600 leading-relaxed ml-13">
+                            <p class="flex items-start gap-3">
+                                <i class="fa-solid fa-map-marker-alt text-brand-blue mt-1 text-sm icon-soft-pulse"></i>
+                                <span><span class="font-semibold text-brand-dark">Сочи Парк Отель</span>, Сочи, пгт. Сириус</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <i class="fa-solid fa-clock text-brand-blue mt-1 text-sm icon-soft-pulse"></i>
+                                <span>Время заселения в отель - <span class="font-semibold text-brand-pink">с 15:00</span>, время выселения – <span class="font-semibold text-brand-pink">до 12:00</span>.</span>
+                            </p>
+                            <p class="flex items-start gap-3">
+                                <i class="fa-solid fa-exclamation-triangle text-brand-pink mt-1 text-sm icon-soft-pulse"></i>
+                                <span class="text-brand-dark font-medium">Заезд и выезд в дни конкурсной программы 20 и 21 мая не предусмотрен. Размещение во время мероприятий фестиваля возможно не менее, чем на 3-е (трое) суток.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Стоимость размещения -->
+                    <div class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 relative overflow-hidden">
+                        <!-- Индикатор -->
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand-pink/50 group-hover:bg-brand-pink transition-colors"></div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-brand-pink/10 flex items-center justify-center">
+                                <i class="fa-solid fa-ruble-sign text-brand-pink icon-soft-pulse"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-brand-dark">Стоимость размещения</h3>
+                        </div>
+
+                        <p class="text-slate-600 text-base mb-6 ml-13">(полный пансион – включен завтрак, обед и ужин «шведский стол»)</p>
+
+                        <button onclick="toggleDetails(this)" class="w-12 h-12 flex items-center justify-center rounded-full bg-brand-pink/10 hover:bg-brand-pink/20 transition-all ml-13 mb-6">
+                            <i class="fa-solid fa-chevron-down text-brand-pink text-lg transition hover:scale-125 hover:text-brand-blue"></i>
+                        </button>
+
+                        <div class="hidden overflow-hidden transition-all duration-300 ease-in-out">
+                            <div class="ml-13 space-y-6">
+
+                                <div class="grid grid-cols-1 gap-4">
+                                    <div class="bg-brand-surface p-4 rounded-2xl hover:bg-brand-surface/80 transition-colors">
+                                        <div class="mb-3">
+                                            <span class="font-bold text-brand-dark">* При оплате до 23 апреля 2025 года включительно:</span>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between items-center py-1">
+                                                <span class="text-slate-600">Одноместное размещение</span>
+                                                <span class="text-xl font-bold text-brand-pink">7000 ₽/сутки</span>
+                                            </div>
+                                            <div class="flex justify-between items-center py-1">
+                                                <span class="text-slate-600">Двухместное размещение</span>
+                                                <span class="text-xl font-bold text-brand-pink">6000 ₽/сутки</span>
+                                            </div>
+                                            <div class="flex justify-between items-center py-1">
+                                                <span class="text-slate-600">Трехместное размещение</span>
+                                                <span class="text-xl font-bold text-brand-pink">6000 ₽/сутки</span>
+                                            </div>
+                                            <div class="text-xs text-slate-400 mt-2">
+                                                за 1 человека (категория «Стандарт»)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-brand-surface p-4 rounded-2xl hover:bg-brand-surface/80 transition-colors">
+                                        <div class="mb-3">
+                                            <span class="font-bold text-brand-dark">* При оплате с 24 апреля по 30 апреля 2025 года включительно:</span>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between items-center py-1">
+                                                <span class="text-slate-600">Одноместное размещение</span>
+                                                <span class="text-xl font-bold text-brand-pink">7500 ₽/сутки</span>
+                                            </div>
+                                            <div class="flex justify-between items-center py-1">
+                                                <span class="text-slate-600">Двухместное размещение</span>
+                                                <span class="text-xl font-bold text-brand-pink">6500 ₽/сутки</span>
+                                            </div>
+                                            <div class="flex justify-between items-center py-1">
+                                                <span class="text-slate-600">Трехместное размещение</span>
+                                                <span class="text-xl font-bold text-brand-pink">6500 ₽/сутки</span>
+                                            </div>
+                                            <div class="text-xs text-slate-400 mt-2">
+                                                за 1 человека (категория «Стандарт»)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-slate-600 mt-6 mb-4 font-semibold text-brand-dark">В стоимость входит:</div>
+                                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                                    <li>проживание в номере категории «Стандарт»;</li>
+                                    <li>полный пансион - завтрак, обед и ужин «шведский стол»;</li>
+                                    <li>трансфер до мероприятий и обратно (кроме трансферов в аэропорты и на вокзалы);</li>
+                                    <li>волонтерское сопровождение на мероприятиях.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="ml-13">
+                            <p class="text-slate-600 mt-6 mb-4 font-semibold text-brand-dark">В стоимость входит:</p>
+                            <ul class="list-disc list-inside space-y-2 text-slate-600">
+                                <li>проживание в номере категории «Стандарт»;</li>
+                                <li>полный пансион - завтрак, обед и ужин «шведский стол»;</li>
+                                <li>трансфер до мероприятий и обратно (кроме трансферов в аэропорты и на вокзалы);</li>
+                                <li>волонтерское сопровождение на мероприятиях.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Трансферы и логистика -->
+                    <div class="group bg-gradient-to-r from-brand-surface to-white p-6 md:p-8 rounded-[2.5rem] border border-slate-200 hover:border-brand-blue/30 transition-all duration-300 hover:shadow-lg">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-route text-brand-blue text-xl icon-soft-pulse"></i>
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-xl font-bold text-brand-dark group-hover:text-brand-blue transition-colors">Трансферы и логистика</h3>
+                                <div class="space-y-3 text-slate-600 leading-relaxed">
+                                    <p>Трансфер от аэропорта или вокзала и обратно коллективы обеспечивают <span class="font-semibold text-brand-dark">самостоятельно</span>. Если участникам нужна помощь в организации трансферов, можно обратиться в Оргкомитет фестиваля.</p>
+                                    <p class="flex items-start gap-2">
+                                        <i class="fa-solid fa-train text-brand-blue mt-1 text-sm"></i>
+                                        <span>Для тех, кто добирается до Сочи <span class="font-semibold text-brand-dark">поездом</span>, обращаем внимание, что ближайший вокзал к отелю – <span class="font-semibold text-brand-pink">железнодорожный вокзал Адлера</span>.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Бронирование номеров -->
+                    <div class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 relative overflow-hidden">
+                        <!-- Индикатор -->
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand-blue/50 group-hover:bg-brand-blue transition-colors"></div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center">
+                                <i class="fa-solid fa-calendar-check text-brand-blue icon-soft-pulse"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-brand-dark">Бронирование номеров</h4>
+                        </div>
+                        <div class="ml-13 space-y-3">
+                            <p class="text-slate-600 leading-relaxed">Для бронирования номеров в отеле необходимо заполнить заявку с указанием всех гостей и направить её на официальную почту фестиваля: <span class="font-semibold text-brand-pink">info@inclusive-dance.ru</span></p>
+                            <a href="#" class="inline-flex items-center gap-2 text-brand-blue hover:text-brand-blueDark font-medium transition group">
+                                <i class="fa-solid fa-file-pdf text-xs group-hover:scale-110 transition"></i>
+                                Скачать форму заявки на бронирование номеров
+                                <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Благотворительный взнос -->
+                    <div id="charitable-contribution" class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 relative overflow-hidden">
+                        <!-- Индикатор -->
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand-pink/50 group-hover:bg-brand-pink transition-colors"></div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-pink/10 flex items-center justify-center">
+                                <i class="fa-solid fa-heart text-brand-pink icon-soft-pulse"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-brand-dark">Благотворительный взнос</h3>
+                        </div>
+                        <p class="text-slate-600 mb-6 ml-13">За участие в конкурсе взимается <a href="#charitable-contribution" class="text-brand-blue hover:text-brand-blueDark underline transition">благотворительный взнос</a> в зависимости от номинации, в которой выступает коллектив:</p>
+
+                        <button onclick="toggleDetails(this)" class="w-12 h-12 flex items-center justify-center rounded-full bg-brand-pink/10 hover:bg-brand-pink/20 transition-all ml-13 mb-6">
+    <i class="fa-solid fa-chevron-down text-brand-pink text-lg transition hover:scale-125 hover:text-brand-blue"></i>
+</button>
+
+                        <div class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-6">
+                            <div class="ml-13">
+                                <div class="grid grid-cols-1 gap-4 mb-6">
+                                    <div class="bg-brand-surface p-4 rounded-2xl hover:bg-brand-surface/80 transition-colors">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="font-bold text-brand-dark">«Дуэт» (2 чел.)</span>
+                                            <span class="text-xl font-bold text-brand-pink">2 000 ₽</span>
+                                        </div>
+                                        <span class="text-xs text-slate-400">с человека за одно выступление</span>
+                                    </div>
+                                    <div class="bg-brand-surface p-4 rounded-2xl hover:bg-brand-surface/80 transition-colors">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="font-bold text-brand-dark">«Малая группа» (3-5 чел.)</span>
+                                            <span class="text-xl font-bold text-brand-pink">1 500 ₽</span>
+                                        </div>
+                                        <span class="text-xs text-slate-400">с человека за одно выступление</span>
+                                    </div>
+                                    <div class="bg-brand-surface p-4 rounded-2xl hover:bg-brand-surface/80 transition-colors">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="font-bold text-brand-dark">«Коллектив» (6-11 чел.)</span>
+                                            <span class="text-xl font-bold text-brand-pink">1 200 ₽</span>
+                                        </div>
+                                        <span class="text-xs text-slate-400">с человека за одно выступление</span>
+                                    </div>
+                                    <div class="bg-brand-surface p-4 rounded-2xl hover:bg-brand-surface/80 transition-colors">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="font-bold text-brand-dark">«Большой коллектив» (12 чел. и больше)</span>
+                                            <span class="text-xl font-bold text-brand-pink">1 000 ₽</span>
+                                        </div>
+                                        <span class="text-xs text-slate-400">с человека за одно выступление</span>
+                                    </div>
+                                </div>
+                                <div class="bg-gradient-to-r from-blue-50 to-pink-50 rounded-2xl p-4 border border-blue-100">
+                                    <p class="text-sm text-slate-600">
+                                        Взнос производится от коллектива за каждый танцевальный номер. Размер взноса рассчитывается в соответствии с номинацией и количеством танцоров, выходящих на сцену во время выступления. <span class="font-semibold text-brand-dark">Благотворительный взнос за участие не подлежит возврату.</span> Возможна только замена танцоров, за которых оплачены взносы.<br><br>
+                                        <span class="font-semibold text-brand-pink">Оплата благотворительных взносов – до 30 апреля 2026 года включительно.</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Контакты для уточнений -->
+                    <div class="group bg-gradient-to-r from-brand-surface/50 to-white p-6 rounded-2xl border border-slate-200 hover:border-brand-blue/30 transition-all duration-300 hover:shadow-md text-center">
+                        <div class="flex items-center justify-center gap-3 mb-2">
+                            <div class="w-8 h-8 rounded-xl bg-brand-blue/10 flex items-center justify-center group-hover:bg-brand-blue group-hover:text-white transition-all duration-300">
+                                <i class="fa-solid fa-question-circle text-brand-blue icon-soft-pulse"></i>
+                            </div>
+                            <span class="text-slate-600">Уточняющую информацию можно получить в <a href="#org-committee-contacts" class="text-brand-blue hover:text-brand-blueDark transition underline font-semibold">Оргкомитете фестиваля</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Размещение -->
+        <section id="accommodation" class="py-12 bg-white">
             <div class="container mx-auto px-6">
                 <div class="bg-brand-surface rounded-[3rem] p-8 md:p-12 shadow-sm border border-slate-100 overflow-hidden">
                     <div class="grid md:grid-cols-2 gap-12 items-center">
                         <div class="order-2 md:order-1">
                             <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-                                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                                <img src="Отель.jpeg"
                                      alt="Отель Бархатные сезоны" 
                                      class="w-full h-auto object-cover transform hover:scale-105 transition duration-700">
                             </div>
                             <div class="mt-8 grid grid-cols-3 gap-4">
-                                <div class="bg-white p-4 rounded-2xl text-center shadow-sm">
-                                    <i class="fa-solid fa-wheelchair text-brand-blue text-2xl mb-2"></i>
+                                <div class="bg-white p-4 rounded-2xl text-center shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                                    <i class="fa-solid fa-wheelchair text-brand-blue hover:text-brand-pink text-2xl mb-2 transition-colors"></i>
                                     <span class="block text-xs font-bold text-slate-600">Пандусы</span>
                                 </div>
-                                <div class="bg-white p-4 rounded-2xl text-center shadow-sm">
-                                    <i class="fa-solid fa-elevator text-brand-blue text-2xl mb-2"></i>
+                                <div class="bg-white p-4 rounded-2xl text-center shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                                    <i class="fa-solid fa-elevator text-brand-blue hover:text-brand-pink text-2xl mb-2 transition-colors"></i>
                                     <span class="block text-xs font-bold text-slate-600">Лифты</span>
                                 </div>
-                                <div class="bg-white p-4 rounded-2xl text-center shadow-sm">
-                                    <i class="fa-solid fa-utensils text-brand-blue text-2xl mb-2"></i>
+                                <div class="bg-white p-4 rounded-2xl text-center shadow-sm hover:shadow-lg transition-all cursor-pointer">
+                                    <i class="fa-solid fa-utensils text-brand-blue hover:text-brand-pink text-2xl mb-2 transition-colors"></i>
                                     <span class="block text-xs font-bold text-slate-600">Питание</span>
                                 </div>
                             </div>
                         </div>
                         <div class="order-1 md:order-2">
-                            <span class="text-brand-pink font-bold tracking-wider uppercase text-sm mb-2 block">Локация</span>
-                            <h2 class="text-4xl font-extrabold text-brand-dark mb-6 tracking-tight">Отель «Бархатные Сезоны»</h2>
+                            <h2 class="text-3xl font-extrabold text-brand-dark mb-4 tracking-tight">Размещение</h2>
                             <div class="space-y-6 text-slate-600 text-lg leading-relaxed">
                                 <p>
                                     <strong>Условие участия:</strong> Все иногородние участники проживают в официальном отеле. Это гарантирует безопасность, доступную среду (номера для людей на колясках) и удобную логистику.
@@ -599,11 +927,11 @@
                                     Все зоны активности — залы, сцена, столовая — находятся в пешей доступности и полностью адаптированы (без порогов, наличие спец. туалетов).
                                 </p>
                             </div>
-                            <div class="mt-8 p-5 bg-blue-50/50 rounded-2xl border border-blue-100 flex gap-4 items-start">
-                                <i class="fa-solid fa-bus text-brand-blue mt-1"></i>
+                            <div class="mt-8 p-5 bg-blue-50/50 rounded-2xl border border-blue-100 flex gap-4 items-start hover:bg-pink-50/50 hover:border-pink-100 transition-all cursor-pointer">
+                                <i class="fa-solid fa-building text-brand-blue hover:text-brand-pink mt-1 transition-colors"></i>
                                 <div>
-                                    <h4 class="font-bold text-brand-blueDark">Трансфер</h4>
-                                    <p class="text-sm text-slate-600 mt-1">Организаторы оказывают содействие в заказе транспорта от ж/д вокзала или аэропорта (по заявке).</p>
+                                    <h4 class="font-bold text-brand-blueDark">Сочи Парк Отель</h4>
+                                    <p class="text-sm text-slate-600 mt-1">г. Сочи, пгт. Сириус</p>
                                 </div>
                             </div>
                         </div>
@@ -612,143 +940,196 @@
             </div>
         </section>
 
-        <!-- 6. Финансы (Pricing Style) -->
-        <section id="finance" class="py-24 bg-brand-surface">
+
+
+        <!-- 7. Часто задаваемые вопросы -->
+        <section id="faq" class="py-12 bg-white">
             <div class="container mx-auto px-6 max-w-5xl">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-center text-brand-dark mb-16 tracking-tight">Финансовые условия</h2>
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Блок Проживания -->
-                    <div class="bg-white rounded-[2.5rem] p-8 hover:shadow-lg transition border border-slate-100">
-                        <h3 class="text-2xl font-bold text-brand-blueDark mb-6 flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-brand-blue text-white flex items-center justify-center text-sm">1</span>
-                            Проживание
-                            <span class="text-sm font-normal text-slate-500 ml-auto">за чел/сутки</span>
-                        </h3>
-                        
-                        <div class="space-y-4">
-                            <!-- Item -->
-                            <div class="bg-brand-surface p-5 rounded-2xl flex justify-between items-center">
-                                <div>
-                                    <span class="block font-bold text-brand-dark">1-местный номер</span>
-                                    <span class="text-xs text-slate-400">до 01.04.2026</span>
-                                </div>
-                                <span class="text-xl font-bold text-brand-pink">4 500 ₽</span>
-                            </div>
-                            <!-- Item -->
-                            <div class="bg-brand-surface p-5 rounded-2xl flex justify-between items-center">
-                                <div>
-                                    <span class="block font-bold text-brand-dark">2/3-местный номер</span>
-                                    <span class="text-xs text-slate-400">до 01.04.2026</span>
-                                </div>
-                                <span class="text-xl font-bold text-brand-pink">3 200 ₽</span>
-                            </div>
-                        </div>
-                        <p class="mt-6 text-sm text-slate-500 italic">
-                            *После 01.04.2026 стоимость увеличивается на 500₽.
-                        </p>
-                    </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-brand-dark mb-12 tracking-tight">Часто задаваемые вопросы (FAQ)</h2>
 
-                    <!-- Блок Взносов -->
-                    <div class="bg-white rounded-[2.5rem] p-8 hover:shadow-lg transition border border-slate-100">
-                        <h3 class="text-2xl font-bold text-brand-blueDark mb-6 flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-lg bg-brand-pink text-white flex items-center justify-center text-sm">2</span>
-                            Оргвзнос
-                            <span class="text-sm font-normal text-slate-500 ml-auto">Конкурс</span>
-                        </h3>
-                        
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-brand-surface p-4 rounded-2xl text-center border border-transparent hover:border-brand-pink/30 transition">
-                                <span class="block text-slate-500 text-xs mb-1 uppercase tracking-wide">Дуэт</span>
-                                <span class="block text-lg font-extrabold text-brand-dark">1 500 ₽</span>
-                                <span class="text-xs text-slate-400">с чел.</span>
+                <div class="space-y-8">
+                    <!-- Кто может участвовать в фестивале? -->
+                    <div class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand-blue/50 group-hover:bg-brand-blue transition-colors"></div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center">
+                                <i class="fa-solid fa-users text-brand-blue icon-soft-pulse"></i>
                             </div>
-                            <div class="bg-brand-surface p-4 rounded-2xl text-center border border-transparent hover:border-brand-pink/30 transition">
-                                <span class="block text-slate-500 text-xs mb-1 uppercase tracking-wide">Малый</span>
-                                <span class="block text-lg font-extrabold text-brand-dark">1 000 ₽</span>
-                                <span class="text-xs text-slate-400">с чел.</span>
-                            </div>
-                            <div class="bg-brand-surface p-4 rounded-2xl text-center border border-transparent hover:border-brand-pink/30 transition">
-                                <span class="block text-slate-500 text-xs mb-1 uppercase tracking-wide">Средний</span>
-                                <span class="block text-lg font-extrabold text-brand-dark">800 ₽</span>
-                                <span class="text-xs text-slate-400">с чел.</span>
-                            </div>
-                            <div class="bg-brand-surface p-4 rounded-2xl text-center border border-transparent hover:border-brand-pink/30 transition">
-                                <span class="block text-slate-500 text-xs mb-1 uppercase tracking-wide">Большой</span>
-                                <span class="block text-lg font-extrabold text-brand-dark">600 ₽</span>
-                                <span class="text-xs text-slate-400">с чел.</span>
+                            <h3 class="text-2xl font-bold text-brand-dark">Кто может участвовать в фестивале?</h3>
+                        </div>
+
+                        <button onclick="toggleDetails(this)" class="w-full flex items-center justify-end text-left mb-6 ml-13">
+                            <i class="fa-solid fa-chevron-down text-brand-blue text-2xl transition hover:scale-125 hover:text-brand-pink"></i>
+                        </button>
+
+                        <div class="hidden overflow-hidden transition-all duration-300 ease-in-out">
+                            <div class="ml-13 space-y-4 text-slate-600">
+                                <p>В фестивале могут участвовать инклюзивные коллективы и дуэты, где танцуют люди с инвалидностью и без. Возраст участников - от 3-х лет. Мы приветствуем всех, кто хочет развиваться в танце и делиться своим творчеством.</p>
+                                <p class="font-semibold text-brand-dark">Важно: Сольные выступления в конкурсной программе не принимаются.</p>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <p class="text-center mt-8 text-slate-500 max-w-2xl mx-auto">
-                    Иногородние коллективы оплачивают проезд, проживание и питание за счет собственных средств или командирующей стороны.
-                </p>
-            </div>
-        </section>
 
-        <!-- 7. Документы (Minimal) -->
-        <section id="documents" class="py-20 bg-white border-t border-slate-200">
-            <div class="container mx-auto px-6 max-w-4xl text-center">
-                <h2 class="text-3xl font-bold text-brand-dark mb-10">Документация</h2>
-                <div class="flex flex-wrap justify-center gap-6">
-                    <a href="#" class="flex items-center gap-4 pl-6 pr-8 py-4 bg-brand-surface rounded-full shadow-sm hover:shadow-lg transition-all border border-slate-100 group">
-                        <div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                            <i class="fa-regular fa-file-pdf"></i>
+                    <!-- Как подать заявку на участие? -->
+                    <div class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand-pink/50 group-hover:bg-brand-pink transition-colors"></div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-pink/10 flex items-center justify-center">
+                                <i class="fa-solid fa-file-signature text-brand-pink icon-soft-pulse"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-brand-dark">Как подать заявку на участие?</h3>
                         </div>
-                        <div class="text-left">
-                            <span class="block font-bold text-brand-dark group-hover:text-brand-blue transition">Положение</span>
-                            <span class="text-xs text-slate-400">PDF, 2.4 MB</span>
+
+                        <button onclick="toggleDetails(this)" class="w-full flex items-center justify-end text-left mb-6 ml-13">
+                            <i class="fa-solid fa-chevron-down text-brand-pink text-2xl transition hover:scale-125 hover:text-brand-blue"></i>
+                        </button>
+
+                        <div class="hidden overflow-hidden transition-all duration-300 ease-in-out">
+                            <div class="ml-13 space-y-4 text-slate-600">
+                                <p>Заявки принимаются с 1 января по 15 апреля 2026 года. На каждое мероприятие (Школа, Парные соревнования, Конкурс) подается отдельная заявка через специальную форму на сайте.</p>
+                                <p>Представитель коллектива должен указать всех участников и предоставить необходимую информацию о коллективе.</p>
+                                <p class="bg-brand-pink/5 rounded-xl p-4 border border-brand-pink/20">
+                                    <span class="font-semibold text-brand-pink">Срок подачи заявок: до 15 апреля 2026 года (23:59 по МСК)</span>
+                                </p>
+                            </div>
                         </div>
-                    </a>
-                    
-                    <a href="#" class="flex items-center gap-4 pl-6 pr-8 py-4 bg-brand-surface rounded-full shadow-sm hover:shadow-lg transition-all border border-slate-100 group">
-                        <div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                            <i class="fa-regular fa-file-pdf"></i>
+                    </div>
+
+                    <!-- Сколько стоит участие? -->
+                    <div class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand-blue/50 group-hover:bg-brand-blue transition-colors"></div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center">
+                                <i class="fa-solid fa-ruble-sign text-brand-blue icon-soft-pulse"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-brand-dark">Сколько стоит участие?</h3>
                         </div>
-                        <div class="text-left">
-                            <span class="block font-bold text-brand-dark group-hover:text-brand-blue transition">Правила</span>
-                            <span class="text-xs text-slate-400">PDF, 1.1 MB</span>
+
+                        <button onclick="toggleDetails(this)" class="w-full flex items-center justify-end text-left mb-6 ml-13">
+                            <i class="fa-solid fa-chevron-down text-brand-blue text-2xl transition hover:scale-125 hover:text-brand-pink"></i>
+                        </button>
+
+                        <div class="hidden overflow-hidden transition-all duration-300 ease-in-out">
+                            <div class="ml-13 space-y-4 text-slate-600">
+                                <p>Участие в Школе инклюзивного танца и Парных соревнованиях бесплатное. За участие в Конкурсе взимается благотворительный взнос:</p>
+                                <ul class="list-disc list-inside space-y-2">
+                                    <li><strong>Дуэт (2 человека):</strong> 2 000 ₽ с человека</li>
+                                    <li><strong>Малая группа (3-5 человек):</strong> 1 500 ₽ с человека</li>
+                                    <li><strong>Коллектив (6-11 человек):</strong> 1 200 ₽ с человека</li>
+                                    <li><strong>Большой коллектив (12+ человек):</strong> 1 000 ₽ с человека</li>
+                                </ul>
+                                <p>Дополнительно оплачивается проживание и питание для иногородних участников.</p>
+                            </div>
                         </div>
-                    </a>
-                    
-                    <a href="#" class="flex items-center gap-4 pl-6 pr-8 py-4 bg-brand-surface rounded-full shadow-sm hover:shadow-lg transition-all border border-slate-100 group">
-                        <div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-xl group-hover:scale-110 transition">
-                            <i class="fa-regular fa-file-pdf"></i>
+                    </div>
+
+
+
+
+
+                    <!-- Контакты для уточнений -->
+                    <div class="group bg-gradient-to-r from-brand-surface/50 to-white p-6 rounded-2xl border border-slate-200 hover:border-brand-blue/30 transition-all duration-300 hover:shadow-md text-center">
+                        <div class="flex items-center justify-center gap-3 mb-2">
+                            <div class="w-8 h-8 rounded-xl bg-brand-blue/10 flex items-center justify-center group-hover:bg-brand-blue group-hover:text-white transition-all duration-300">
+                                <i class="fa-solid fa-question-circle text-brand-blue icon-soft-pulse"></i>
+                            </div>
+                            <span class="text-slate-600">Остались вопросы? Свяжитесь с <a href="#org-committee-contacts" class="text-brand-blue hover:text-brand-blueDark transition underline font-semibold">Оргкомитетом фестиваля</a></span>
                         </div>
-                        <div class="text-left">
-                            <span class="block font-bold text-brand-dark group-hover:text-brand-blue transition">Регламент</span>
-                            <span class="text-xs text-slate-400">PDF, 0.9 MB</span>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 8. Галерея (Masonry Grid) -->
-        <section class="py-24 bg-brand-surface">
+        <section id="gallery" class="py-12 bg-brand-surface">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-extrabold text-center text-brand-dark mb-16 tracking-tight">Мгновения фестиваля</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <div class="grid gap-6 h-fit">
-                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Танцующая пара">
-                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Яркие костюмы">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="ШколаИТ.jpg" alt="Школа инклюзивного танца">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="Коллективы.jpg" alt="Танцевальные коллективы">
                     </div>
                     <div class="grid gap-6 h-fit">
-                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="https://images.unsplash.com/photo-1545959828-090c8a6f6df6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Танец на коляске">
-                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Награждение">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="00000251.JPG" alt="Фестивальные моменты">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="СочиФест.jpg" alt="Фестиваль в Сочи">
                     </div>
                     <div class="grid gap-6 h-fit">
-                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="https://images.unsplash.com/photo-1504609773096-104ff10587a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Эмоции детей">
-                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="https://images.unsplash.com/photo-1499364615650-ec387c17b9b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Общее фото">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="00000270.JPG" alt="Танцевальные эмоции">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="240520_Пары_P5200428.jpg" alt="Парные танцы">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Контакты оргкомитета -->
+        <section id="org-committee-contacts" class="py-12 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-brand-dark mb-12 tracking-tight">Контакты оргкомитета</h2>
+
+                <div class="space-y-8">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-brand-dark mb-4">Международный благотворительный танцевальный фестиваль Инклюзив Дэнс</h3>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <i class="fa-solid fa-map-marker-alt text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark mb-1">Почтовый адрес</h4>
+                                    <p class="text-slate-600">109443, Москва, Волгоградский пр-кт, д. 145, корп.2, оф. 25</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <i class="fa-solid fa-globe text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark mb-1">Официальный сайт</h4>
+                                    <a href="http://www.inclusive-dance.ru" class="text-brand-blue hover:text-brand-blueDark transition">www.inclusive-dance.ru</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <i class="fa-solid fa-envelope text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark mb-1">Электронная почта</h4>
+                                    <a href="mailto:info@inclusive-dance.ru" class="text-brand-blue hover:text-brand-blueDark transition">info@inclusive-dance.ru</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <i class="fa-solid fa-phone text-brand-pink hover:text-brand-blue text-2xl mt-1 transition-colors cursor-pointer"></i>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark mb-1">Телефон (WhatsApp, Телеграм)</h4>
+                                    <a href="tel:+79264478292" class="text-brand-pink hover:text-brand-pinkDark transition font-semibold">+7 (926) 447-82-92</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <i class="fa-brands fa-vk text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark mb-1">ВКонтакте</h4>
+                                    <a href="https://vk.com/inclusive.dance" class="text-brand-blue hover:text-brand-blueDark transition">https://vk.com/inclusive.dance</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <i class="fa-brands fa-telegram text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
+                                <div>
+                                    <h4 class="font-bold text-brand-dark mb-1">Телеграм</h4>
+                                    <a href="https://t.me/inclusivedance" class="text-brand-blue hover:text-brand-blueDark transition">https://t.me/inclusivedance</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 9. Футер -->
+    <!-- 10. Футер -->
     <footer id="contacts" class="bg-brand-dark text-white pt-24 pb-12 rounded-t-[3rem] mt-12">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-3 gap-16 mb-16">
@@ -765,8 +1146,8 @@
                     <h3 class="text-xl font-bold mb-8 text-gray-200 uppercase tracking-widest text-sm">Контакты</h3>
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-phone text-brand-blue"></i>
+                            <div class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-pink flex items-center justify-center shrink-0 transition-colors cursor-pointer">
+                                <i class="fa-solid fa-phone text-brand-blue hover:text-white text-xl transition-colors"></i>
                             </div>
                             <div>
                                 <span class="block text-sm text-gray-500 mb-1">Горячая линия</span>
@@ -774,8 +1155,8 @@
                             </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-envelope text-brand-blue"></i>
+                            <div class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-pink flex items-center justify-center shrink-0 transition-colors cursor-pointer">
+                                <i class="fa-solid fa-envelope text-brand-blue hover:text-white text-xl transition-colors"></i>
                             </div>
                             <div>
                                 <span class="block text-sm text-gray-500 mb-1">Email для заявок</span>
@@ -807,278 +1188,7 @@
         </div>
     </footer>
 
-    <!-- Модальные окна для заявок -->
-    
-    <!-- Модальное окно для Школы танца -->
-    <div id="schoolModal" class="modal fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 relative">
-            <button onclick="closeModal('schoolModal')" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition">
-                <i class="fa-solid fa-times"></i>
-            </button>
-            
-            <div class="mb-6">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 rounded-2xl bg-brand-pink/10 flex items-center justify-center">
-                        <i class="fa-solid fa-graduation-cap text-brand-pink text-xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-brand-dark">Заявка на Школу инклюзивного танца</h3>
-                </div>
-                <p class="text-gray-600">16-19 мая 2026 • 4 дня интенсивного обучения</p>
-            </div>
 
-            <form class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Имя участника *</label>
-                        <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Фамилия *</label>
-                        <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
-                        <input type="email" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Телефон *</label>
-                        <input type="tel" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Роль в танце *</label>
-                    <select required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                        <option value="">Выберите роль</option>
-                        <option value="dancer">Танцор</option>
-                        <option value="volunteer">Волонтер</option>
-                        <option value="choreographer">Хореограф</option>
-                    </select>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Опыт в инклюзивном танце</label>
-                    <textarea rows="3" placeholder="Расскажите о вашем опыте..." class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue"></textarea>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Особые потребности в доступности</label>
-                    <textarea rows="2" placeholder="Укажите, если нужны специальные условия..." class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue"></textarea>
-                </div>
-                
-                <div class="bg-blue-50 rounded-2xl p-4">
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-info-circle text-brand-blue mt-1"></i>
-                        <div class="text-sm">
-                            <p class="font-semibold text-brand-blueDark mb-1">Стоимость участия в Школе</p>
-                            <p class="text-gray-600">Обучение в рамках школы бесплатное. Проживание и питание оплачиваются отдельно согласно тарифам отеля.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <button type="submit" class="w-full bg-brand-pink hover:bg-brand-pinkDark text-white font-semibold py-4 px-6 rounded-2xl transition-all transform hover:scale-[1.02]">
-                    Подать заявку на Школу
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Модальное окно для Баттлов -->
-    <div id="battlesModal" class="modal fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 relative">
-            <button onclick="closeModal('battlesModal')" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition">
-                <i class="fa-solid fa-times"></i>
-            </button>
-            
-            <div class="mb-6">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 flex items-center justify-center">
-                        <i class="fa-solid fa-bolt text-brand-blue text-xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-brand-dark">Заявка на Танцевальную импровизацию</h3>
-                </div>
-                <p class="text-gray-600">20 мая 2026 • Парные соревнования (баттлы)</p>
-            </div>
-
-            <form class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Имя первого участника *</label>
-                        <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Имя второго участника *</label>
-                        <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Название дуэта/коллектива *</label>
-                    <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Контактное лицо *</label>
-                        <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Телефон *</label>
-                        <input type="tel" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
-                    <input type="email" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Город *</label>
-                    <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                </div>
-                
-                <div class="bg-orange-50 rounded-2xl p-4">
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-exclamation-triangle text-orange-500 mt-1"></i>
-                        <div class="text-sm">
-                            <p class="font-semibold text-orange-700 mb-1">Участие только для дуэтов!</p>
-                            <p class="text-gray-600">Баттлы проводятся исключительно в парном формате. Сольные номера не принимаются.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <button type="submit" class="w-full bg-brand-blue hover:bg-brand-blueDark text-white font-semibold py-4 px-6 rounded-2xl transition-all transform hover:scale-[1.02]">
-                    Подать заявку на Баттлы
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Модальное окно для Конкурса -->
-    <div id="contestModal" class="modal fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 relative">
-            <button onclick="closeModal('contestModal')" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition">
-                <i class="fa-solid fa-times"></i>
-            </button>
-            
-            <div class="mb-6">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-r from-brand-blue to-brand-blueDark flex items-center justify-center">
-                        <i class="fa-solid fa-trophy text-white text-xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-brand-dark">Заявка на Большой Конкурс</h3>
-                </div>
-                <p class="text-gray-600">21 мая 2026 • Главное событие фестиваля</p>
-            </div>
-
-            <form class="space-y-6">
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Тип номера *</label>
-                    <select required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                        <option value="">Выберите тип номера</option>
-                        <option value="duet">Дуэт</option>
-                        <option value="small">Малый коллектив (3-7 человек)</option>
-                        <option value="medium">Средний коллектив (8-15 человек)</option>
-                        <option value="large">Большой коллектив (16+ человек)</option>
-                    </select>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Название коллектива/номера *</label>
-                    <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Руководитель/контактное лицо *</label>
-                    <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Телефон *</label>
-                        <input type="tel" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
-                        <input type="email" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Город *</label>
-                    <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Количество участников *</label>
-                    <input type="number" required min="2" class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Хореограф/постановщик</label>
-                    <input type="text" class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Название номера *</label>
-                    <input type="text" required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Стиль танца *</label>
-                    <select required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                        <option value="">Выберите стиль</option>
-                        <option value="contemporary">Современный танец</option>
-                        <option value="classic">Классический танец</option>
-                        <option value="street">Уличные стили</option>
-                        <option value="folk">Народный танец</option>
-                        <option value="jazz">Джаз</option>
-                        <option value="ballet">Балет</option>
-                        <option value="mixed">Смешанный стиль</option>
-                    </select>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Продолжительность номера *</label>
-                    <select required class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue">
-                        <option value="">Выберите продолжительность</option>
-                        <option value="2-3">2-3 минуты</option>
-                        <option value="3-4">3-4 минуты</option>
-                        <option value="4-5">4-5 минут</option>
-                        <option value="5-6">5-6 минут</option>
-                    </select>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Описание номера</label>
-                    <textarea rows="3" placeholder="Краткое описание концепции, идеи номера..." class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue"></textarea>
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Особые требования к технике</label>
-                    <textarea rows="2" placeholder="Технические требования, реквизит и т.д." class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue"></textarea>
-                </div>
-                
-                <div class="bg-green-50 rounded-2xl p-4">
-                    <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-info-circle text-green-600 mt-1"></i>
-                        <div class="text-sm">
-                            <p class="font-semibold text-green-700 mb-1">Организационный взнос</p>
-                            <p class="text-gray-600">Стоимость зависит от типа коллектива. Детали в разделе "Финансовые условия".</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <button type="submit" class="w-full bg-gradient-to-r from-brand-blue to-brand-blueDark hover:from-brand-blueDark hover:to-brand-blue text-white font-bold py-4 px-6 rounded-2xl transition-all transform hover:scale-[1.02] text-lg">
-                    Подать заявку на Конкурс
-                </button>
-            </form>
-        </div>
-    </div>
 
     <!-- Скрипт для мобильного меню -->
     <script>
@@ -1118,42 +1228,11 @@
         setInterval(updateCountdown, 1000);
         updateCountdown(); // Первоначальный запуск
 
-        // Модальные окна для заявок
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Закрытие модального окна при клике вне его
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal(this.id);
-                }
-            });
-        });
-
-        // Закрытие по Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal').forEach(modal => {
-                    if (!modal.classList.contains('hidden')) {
-                        closeModal(modal.id);
-                    }
-                });
-            }
-        });
-
         // Аккордеоны для детальной информации
         function toggleDetails(button) {
             const details = button.nextElementSibling;
             const icon = button.querySelector('i');
-            
+
             if (details.classList.contains('hidden')) {
                 details.classList.remove('hidden');
                 details.style.maxHeight = details.scrollHeight + 'px';
@@ -1163,12 +1242,52 @@
                 details.style.maxHeight = '0px';
                 icon.classList.remove('fa-chevron-up');
                 icon.classList.add('fa-chevron-down');
-                
+
                 setTimeout(() => {
                     details.classList.add('hidden');
                 }, 300);
             }
         }
+    </script>
+
+    <!-- Модальное окно для галереи -->
+    <div id="lightbox" class="lightbox hidden">
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <span class="lightbox-close">&times;</span>
+        </div>
+    </div>
+
+    <script>
+        // Функции для lightbox
+        function openGallery(img) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // Закрытие по клику на крестик
+        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+
+        // Закрытие по клику вне изображения
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Закрытие по клавише Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
     </script>
 </body>
 </html>
