@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Gemini CLI",
+            "type": "shell",
+            "command": "C:\\Tools\\gemini\\gemini.bat",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        }
+    ]
+}
