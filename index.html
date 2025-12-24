@@ -156,51 +156,60 @@
         Перейти к основному контенту
     </a>
 
-    <!-- 1. Навигационная панель (Glassmorphism) -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-white/20 transition-all duration-300" aria-label="Главное меню">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-extrabold tracking-tight text-brand-blueDark flex items-center gap-2 group">
-                <span class="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
-                    <i class="fa-solid fa-water icon-soft-pulse" aria-hidden="true"></i>
-                </span>
-                <span>Инклюзив Дэнс</span>
-            </a>
-            
-            <!-- Десктоп меню -->
-            <ul class="hidden lg:flex space-x-1 font-medium text-lg text-gray-600">
-                <li><a href="#about" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">О фестивале</a></li>
-                <!-- Обе  ссылки ведут на единый блок -->
-                <li><a href="#program" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">Программа</a></li>
-                <li><a href="#participation-conditions" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">Условия</a></li>
-                <li><a href="#faq" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">FAQ</a></li>
-                <li><a href="#org-committee-contacts" class="px-4 py-2 rounded-full hover:bg-gray-100 hover:text-brand-blue transition-all">Контакты</a></li>
-                <li><a href="#applications" class="bg-brand-pink text-white px-4 py-2 rounded-full hover:bg-brand-pinkDark transition-all">Подать заявки</a></li>
-            </ul>
-
-
-
-            <!-- Мобильное меню (кнопка) -->
-            <button id="mobile-menu-btn" class="lg:hidden text-gray-800 text-2xl focus:outline-none p-2 rounded-lg hover:bg-gray-100" aria-label="Открыть меню">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-        
-        <!-- Мобильное меню (выпадающее) -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
-            <ul class="flex flex-col p-6 space-y-4 font-semibold text-gray-800 text-lg">
-                <li><a href="#about" class="block hover:text-brand-pink">О фестивале</a></li>
-                <li><a href="#program" class="block hover:text-brand-pink">Программа и Заявки</a></li>
-                <li><a href="#participation-conditions" class="block hover:text-brand-pink">Условия</a></li>
-                <li><a href="#faq" class="block hover:text-brand-pink">FAQ</a></li>
-                <li><a href="#org-committee-contacts" class="block hover:text-brand-pink">Контакты</a></li>
-                <li><a href="#applications" class="block bg-brand-pink text-white px-3 py-2 rounded-lg hover:bg-brand-pinkDark transition-all">Подать заявки</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <main id="main-content">
         <!-- 2. Hero Section -->
         <section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+            <!-- Логотип вверху справа -->
+            <nav class="absolute top-0 right-0 z-10 bg-transparent" aria-label="Логотип">
+                <div class="container mx-auto px-6 py-4">
+                    <a href="#" class="text-2xl font-extrabold tracking-tight text-white flex items-center gap-2 group">
+                        <span class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white group-hover:bg-white/20 transition-colors duration-300">
+                            <i class="fa-solid fa-water icon-soft-pulse" aria-hidden="true"></i>
+                        </span>
+                        <span>Инклюзив Дэнс</span>
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Меню внизу -->
+            <nav class="absolute bottom-0 left-0 right-0 z-10 bg-transparent" aria-label="Меню навигации">
+                <div class="container mx-auto px-6 py-4 flex justify-center items-center">
+                    <!-- Десктоп меню -->
+                    <ul class="hidden lg:flex space-x-6 font-medium text-lg text-white">
+                        <li><a href="#about" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">О фестивале</a></li>
+                        <!-- Обе  ссылки ведут на единый блок -->
+                        <li><a href="#program" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">Программа</a></li>
+                        <li><a href="#participation-conditions" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">Условия</a></li>
+                        <li><a href="#faq" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">FAQ</a></li>
+                        <li><a href="#org-committee-contacts" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">Контакты</a></li>
+                        <li><a href="#applications" class="bg-brand-pink text-white px-4 py-2 rounded-full hover:bg-brand-pinkDark transition-all">Подать заявки</a></li>
+                    </ul>
+
+                    <!-- Мобильное меню (кнопка) -->
+                    <button id="mobile-menu-btn" class="lg:hidden text-white text-2xl focus:outline-none p-2 rounded-lg hover:bg-white/20" aria-label="Открыть меню">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+
+                <!-- Мобильное меню (fixed с высоким z-index) -->
+                <div id="mobile-menu" class="fixed inset-0 z-50 bg-white lg:hidden hidden" style="top: 0;">
+                    <div class="flex flex-col h-full">
+                        <div class="flex justify-end p-4">
+                            <button id="mobile-menu-close" class="text-gray-800 text-2xl focus:outline-none p-2 rounded-lg hover:bg-gray-100" aria-label="Закрыть меню">
+                                <i class="fa-solid fa-times"></i>
+                            </button>
+                        </div>
+                        <ul class="flex flex-col p-6 space-y-6 font-semibold text-gray-800 text-lg flex-grow justify-center">
+                            <li><a href="#about" class="block hover:text-brand-pink text-center">О фестивале</a></li>
+                            <li><a href="#program" class="block hover:text-brand-pink text-center">Программа и Заявки</a></li>
+                            <li><a href="#participation-conditions" class="block hover:text-brand-pink text-center">Условия</a></li>
+                            <li><a href="#faq" class="block hover:text-brand-pink text-center">FAQ</a></li>
+                            <li><a href="#org-committee-contacts" class="block hover:text-brand-pink text-center">Контакты</a></li>
+                            <li><a href="#applications" class="block bg-brand-pink text-white px-3 py-2 rounded-lg hover:bg-brand-pinkDark transition-all text-center">Подать заявки</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
     <!-- Фон -->
     <div class="absolute inset-0 z-0">
         <img src="Анонс-Шапка.jpg"
@@ -1232,9 +1241,9 @@
             });
         });
 
-        // Счетчик времени до фестиваля
-        function updateCountdown() {
-            const festivalDate = new Date('2026-05-15T00:00:00').getTime();
+        // Закрытие мобильного меню по крестику
+        const closeBtn = document.getElementById('mobile-menu-close');
+        if (closeBtn) {
             const now = new Date().getTime();
             const distance = festivalDate - now;
 
