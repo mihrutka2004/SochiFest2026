@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Иконки FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Настройка конфигурации Tailwind -->
     <script>
@@ -147,6 +147,24 @@
         .lightbox-close:hover {
             color: #00a1e3;
         }
+
+/* --- FORCE ICON FIX --- */
+/* Принудительно заставляем иконки использовать правильный шрифт, игнорируя внешние стили */
+.fa, .fa-brands, .fa-duotone, .fa-light, .fa-regular, .fa-solid, .fa-thin, .fas, .fab {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+}
+.fa-brands, .fab {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+}
+/* --- END FORCE ICON FIX --- */
     </style>
 </head>
 <body class="bg-brand-surface text-brand-dark font-sans leading-relaxed text-lg selection:bg-brand-blue selection:text-white">
@@ -159,55 +177,33 @@
     <main id="main-content">
         <!-- 2. Hero Section -->
         <section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-            <!-- Логотип вверху справа -->
-            <nav class="absolute top-0 right-0 z-10 bg-transparent" aria-label="Логотип">
-                <div class="container mx-auto px-6 py-4">
-                    <a href="#" class="text-2xl font-extrabold tracking-tight text-white flex items-center gap-2 group">
-                        <span class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white group-hover:bg-white/20 transition-colors duration-300">
-                            <i class="fa-solid fa-water icon-soft-pulse" aria-hidden="true"></i>
+            <!-- Логотип -->
+            <nav class="absolute top-0 right-6 z-50 bg-transparent">
+                <div class="py-4 text-right">
+                    <div class="text-2xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                        <span class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white backdrop-blur-md">
+                            <i class="fa-solid fa-water icon-soft-pulse"></i>
                         </span>
                         <span>Инклюзив Дэнс</span>
-                    </a>
+                    </div>
                 </div>
             </nav>
 
-            <!-- Меню внизу -->
-            <nav class="absolute bottom-0 left-0 right-0 z-10 bg-transparent" aria-label="Меню навигации">
-                <div class="container mx-auto px-6 py-4 flex justify-center items-center">
-                    <!-- Десктоп меню -->
+            <!-- Меню (Десктоп + Кнопка мобильного) -->
+            <nav class="absolute bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-black/50 to-transparent pb-4 pt-12">
+                <div class="container mx-auto px-6 flex justify-center items-center">
+                    <!-- Десктоп -->
                     <ul class="hidden lg:flex space-x-6 font-medium text-lg text-white">
-                        <li><a href="#about" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">О фестивале</a></li>
-                        <!-- Обе  ссылки ведут на единый блок -->
-                        <li><a href="#program" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">Программа</a></li>
-                        <li><a href="#participation-conditions" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">Условия</a></li>
-                        <li><a href="#faq" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">FAQ</a></li>
-                        <li><a href="#org-committee-contacts" class="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">Контакты</a></li>
-                        <li><a href="#applications" class="bg-brand-pink text-white px-4 py-2 rounded-full hover:bg-brand-pinkDark transition-all">Подать заявки</a></li>
+                        <li><a href="#about" class="hover:text-pink-400 transition-colors">О фестивале</a></li>
+                        <li><a href="#program" class="hover:text-pink-400 transition-colors">Программа</a></li>
+                        <li><a href="#participation-conditions" class="hover:text-pink-400 transition-colors">Условия</a></li>
+                        <li><a href="#faq" class="hover:text-pink-400 transition-colors">FAQ</a></li>
+                        <li><a href="#applications" class="bg-pink-600 text-white px-5 py-2 rounded-full hover:bg-pink-700 transition-all shadow-lg hover:shadow-pink-500/50">Подать заявку</a></li>
                     </ul>
-
-                    <!-- Мобильное меню (кнопка) -->
-                    <button id="mobile-menu-btn" class="lg:hidden text-white text-2xl focus:outline-none p-2 rounded-lg hover:bg-white/20" aria-label="Открыть меню">
+                    <!-- Мобильная кнопка -->
+                    <button id="mobile-menu-btn" class="lg:hidden text-white text-3xl focus:outline-none p-2 drop-shadow-md">
                         <i class="fa-solid fa-bars"></i>
                     </button>
-                </div>
-
-                <!-- Мобильное меню (fixed с высоким z-index) -->
-                <div id="mobile-menu" class="fixed inset-0 z-50 bg-white lg:hidden hidden" style="top: 0;">
-                    <div class="flex flex-col h-full">
-                        <div class="flex justify-end p-4">
-                            <button id="mobile-menu-close" class="text-gray-800 text-2xl focus:outline-none p-2 rounded-lg hover:bg-gray-100" aria-label="Закрыть меню">
-                                <i class="fa-solid fa-times"></i>
-                            </button>
-                        </div>
-                        <ul class="flex flex-col p-6 space-y-6 font-semibold text-gray-800 text-lg flex-grow justify-center">
-                            <li><a href="#about" class="block hover:text-brand-pink text-center">О фестивале</a></li>
-                            <li><a href="#program" class="block hover:text-brand-pink text-center">Программа и Заявки</a></li>
-                            <li><a href="#participation-conditions" class="block hover:text-brand-pink text-center">Условия</a></li>
-                            <li><a href="#faq" class="block hover:text-brand-pink text-center">FAQ</a></li>
-                            <li><a href="#org-committee-contacts" class="block hover:text-brand-pink text-center">Контакты</a></li>
-                            <li><a href="#applications" class="block bg-brand-pink text-white px-3 py-2 rounded-lg hover:bg-brand-pinkDark transition-all text-center">Подать заявки</a></li>
-                        </ul>
-                    </div>
                 </div>
             </nav>
     <!-- Фон -->
@@ -220,11 +216,13 @@
         <div class="absolute inset-0 bg-black/20"></div>
     </div>
 
-            <div class="relative z-10 container mx-auto px-6 lg:text-left pt-20">
+            <div class="relative z-10 container mx-auto px-6 lg:text-left pt-8">
                 <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-brand-pink backdrop-blur-md border border-brand-pink/30 text-white font-bold text-xl mb-6 uppercase tracking-wider">
                     <span class="w-3 h-3 rounded-full bg-white animate-pulse"></span>
                     Южный Федеральный Округ
                 </div>
+
+                <p class="text-xl md:text-2xl font-bold text-white/90 mb-4 uppercase tracking-widest">Инклюзив Дэнс Сочи - 2026</p>
 
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-white tracking-tight whitespace-nowrap">
                     Море <br>
@@ -232,7 +230,7 @@
                 </h1>
 
                 <p class="text-lg md:text-xl lg:text-2xl mb-10 max-w-2xl font-medium text-gray-100 leading-normal">
-                    Инклюзив Дэнс Сочи. Погрузитесь в атмосферу творчества и дружбы на берегу Черного моря.
+                    Погрузитесь в атмосферу творчества и дружбы на берегу Черного моря.
                 </p>
                 
                 <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
@@ -448,7 +446,7 @@
                         <!-- Иллюстрация -->
                         <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
                             <img src="ШколаИТ.jpg" alt="ШколаИТ.jpg" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
-                            <a href="#applications" class="w-full bg-brand-blue hover:bg-brand-blueDark text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-brand-blue/40 text-center text-lg">
+                            <a href="#applications" class="w-full bg-brand-pink hover:bg-brand-pinkDark text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-brand-pink/40 text-center text-lg">
                                 Подать заявку
                             </a>
                         </div>
@@ -667,7 +665,7 @@
                         <!-- Иллюстрация -->
                         <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
                             <img src="Коллективы.jpg" alt="Коллективы.jpg" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
-                            <a href="#applications" class="w-full bg-brand-pink hover:bg-brand-pinkDark text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-brand-pink/40 text-center text-lg">
+                            <a href="#applications" class="w-full bg-brand-blue hover:bg-brand-blueDark text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-brand-blue/40 text-center text-lg">
                                 Подать заявку
                             </a>
                         </div>
@@ -1201,6 +1199,19 @@
         </section>
     </main>
 
+    <!-- Мобильное меню -->
+    <div id="mobile-menu" class="fixed inset-0 z-[9999] bg-slate-900/95 backdrop-blur-xl lg:hidden hidden transition-all duration-300 flex flex-col justify-center items-center">
+        <button id="mobile-menu-close" class="absolute top-8 right-8 text-white/80 hover:text-white text-4xl transition-colors">
+            <i class="fa-solid fa-times"></i>
+        </button>
+        <ul class="flex flex-col space-y-8 text-center text-2xl font-bold text-white">
+            <li><a href="#about" class="hover:text-pink-500 transition-colors">О фестивале</a></li>
+            <li><a href="#program" class="hover:text-pink-500 transition-colors">Программа</a></li>
+            <li><a href="#participation-conditions" class="hover:text-pink-500 transition-colors">Условия</a></li>
+            <li><a href="#applications" class="inline-block mt-4 bg-pink-600 px-8 py-3 rounded-full shadow-lg hover:bg-pink-700">Подать заявку</a></li>
+        </ul>
+    </div>
+
         <!-- 10. Заключительная секция -->
         <section class="py-12">
             <div class="bg-gradient-to-r from-brand-blue to-brand-pink py-8 mb-4">
@@ -1228,6 +1239,17 @@
 
     <!-- Скрипт для мобильного меню -->
     <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileClose = document.getElementById('mobile-menu-close');
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+
+        if(mobileBtn && mobileMenu && mobileClose) {
+            mobileBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+            mobileClose.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        }
+
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
@@ -1241,9 +1263,9 @@
             });
         });
 
-        // Закрытие мобильного меню по крестику
-        const closeBtn = document.getElementById('mobile-menu-close');
-        if (closeBtn) {
+        // Счетчик времени до фестиваля
+        function updateCountdown() {
+            const festivalDate = new Date('2026-05-15T00:00:00').getTime();
             const now = new Date().getTime();
             const distance = festivalDate - now;
 
@@ -1325,5 +1347,24 @@
             }
         });
     </script>
+
+    <!-- Мобильное меню -->
+    <div id="mobile-menu" class="fixed inset-0 z-[9999] bg-white/95 backdrop-blur-xl lg:hidden hidden transition-all duration-300">
+        <div class="flex flex-col h-full">
+            <div class="flex justify-end p-4">
+                <button id="mobile-menu-close" class="text-gray-800 text-2xl focus:outline-none p-2 rounded-lg hover:bg-gray-100" aria-label="Закрыть меню">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <ul class="flex flex-col p-6 space-y-6 font-semibold text-gray-800 text-lg flex-grow justify-center">
+                <li><a href="#about" class="block hover:text-brand-pink text-center">О фестивале</a></li>
+                <li><a href="#program" class="block hover:text-brand-pink text-center">Программа и Заявки</a></li>
+                <li><a href="#participation-conditions" class="block hover:text-brand-pink text-center">Условия</a></li>
+                <li><a href="#faq" class="block hover:text-brand-pink text-center">FAQ</a></li>
+                <li><a href="#org-committee-contacts" class="block hover:text-brand-pink text-center">Контакты</a></li>
+                <li><a href="#applications" class="block bg-brand-pink text-white px-3 py-2 rounded-lg hover:bg-brand-pinkDark transition-all text-center">Подать заявки</a></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
