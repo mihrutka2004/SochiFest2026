@@ -1,0 +1,569 @@
+<!-- HTML код лендинга для вставки в Bitrix конструктор -->
+<!-- Вставьте этот код в HTML-блок конструктора посадочных страниц -->
+
+<!-- Подключение стилей и скриптов -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Стили для лендинга -->
+<style>
+/* Контейнер для изоляции стилей лендинга */
+.bitrix-landing-wrapper {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Усиленный фокус для доступности */
+.bitrix-landing-wrapper *:focus-visible {
+    outline: 3px solid #00a1e3;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Стилизация скроллбара */
+.bitrix-landing-wrapper ::-webkit-scrollbar {
+    width: 10px;
+}
+.bitrix-landing-wrapper ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.bitrix-landing-wrapper ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 5px;
+}
+.bitrix-landing-wrapper ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Утилита для скрытия текста от глаз, но не от скринридеров */
+.bitrix-landing-wrapper .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Мягкая пульсация для иконок */
+@keyframes softPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.bitrix-landing-wrapper .icon-soft-pulse {
+    animation: softPulse 4s ease-in-out infinite;
+}
+
+/* Стили для модального окна lightbox */
+.bitrix-landing-wrapper .lightbox {
+    position: fixed;
+    z-index: 10000; /* Высокий z-index для Bitrix */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bitrix-landing-wrapper .lightbox.hidden {
+    display: none;
+}
+
+.bitrix-landing-wrapper .lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.bitrix-landing-wrapper .lightbox img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.bitrix-landing-wrapper .lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.bitrix-landing-wrapper .lightbox-close:hover {
+    color: #00a1e3;
+}
+
+/* Конфигурация Tailwind для лендинга */
+.bitrix-landing-wrapper {
+    --tw-ring-color: rgb(0 161 227 / 0.5);
+}
+</style>
+
+<!-- Основной контейнер лендинга -->
+<div class="bitrix-landing-wrapper" id="promo-landing-wrapper">
+    <!-- Ссылка для скринридеров -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:px-6 focus:py-4 focus:rounded-xl focus:shadow-2xl focus:text-pink-600 font-bold border-2 border-pink-600">
+        Перейти к основному контенту
+    </a>
+
+    <main id="main-content">
+        <!-- 1. Hero Section -->
+        <section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+            <!-- Фон -->
+            <div class="absolute inset-0 z-0">
+                <img src="/upload/landing_img/ШколаИТ.jpg"
+                     alt="СочиФест"
+                     class="w-full h-full object-cover">
+                <!-- Современный градиент -->
+                <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-blue-900/40 to-gray-900/80 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-black/20"></div>
+            </div>
+
+            <div class="relative z-10 container mx-auto px-6 text-center lg:text-left pt-20">
+                <div class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-pink-600 backdrop-blur-md border border-pink-500/30 text-white font-bold text-xl mb-6 uppercase tracking-wider shadow-xl">
+                    <span class="w-3 h-3 rounded-full bg-white animate-pulse"></span>
+                    Южный Федеральный Округ
+                </div>
+
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight text-white tracking-tight">
+                    Море <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white">возможностей</span>
+                </h1>
+
+                <p class="text-xl md:text-2xl mb-10 max-w-2xl font-medium text-gray-100 leading-normal">
+                    Инклюзив Дэнс Сочи. Погрузитесь в атмосферу творчества и дружбы на берегу Черного моря.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
+                    <!-- Плашки с информацией -->
+                    <div class="flex flex-col gap-4 text-xl font-medium text-white/90">
+                        <div class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all cursor-pointer">
+                            <i class="fa-regular fa-calendar text-pink-400 hover:text-blue-400 text-xl transition-colors"></i>
+                            <span>15 – 22 Мая 2026</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all cursor-pointer">
+                            <i class="fa-solid fa-location-dot text-pink-400 hover:text-blue-400 text-xl transition-colors"></i>
+                            <span>Сочи, пгт. Сириус</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. О фестивале -->
+        <section id="about" class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-blue-900 mb-3 tracking-tight">
+                            Глубина вашего <span class="text-blue-600">таланта</span>
+                        </h2>
+                        <div class="prose prose-lg text-slate-600 leading-loose">
+                            <p class="mb-6">
+                                Межрегиональный инклюзивный танцевальный фестиваль «Инклюзив Дэнс Сочи. Море возможностей» — это не просто конкурс. Это профессиональная платформа для развития инклюзивных коллективов. Мы создали условия, где вы сможете совместить интенсивную танцевальную практику с оздоровительным отдыхом.
+                            </p>
+
+                            <!-- Счетчик времени до фестиваля -->
+                            <div class="countdown-timer bg-gray-50 border border-slate-200 rounded-2xl p-4 text-center mb-6">
+                                <h3 class="text-lg font-bold text-gray-900 mb-3 text-center">До начала фестиваля:</h3>
+                                <div class="grid grid-cols-4 gap-2 text-center">
+                                    <div class="bg-white rounded-xl p-2 shadow-sm">
+                                        <div class="text-2xl font-extrabold text-gray-900" id="days">156</div>
+                                        <div class="text-xs text-slate-600 uppercase tracking-wider">дней</div>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-2 shadow-sm">
+                                        <div class="text-2xl font-extrabold text-gray-900" id="hours">12</div>
+                                        <div class="text-xs text-slate-600 uppercase tracking-wider">часов</div>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-2 shadow-sm">
+                                        <div class="text-2xl font-extrabold text-gray-900" id="minutes">34</div>
+                                        <div class="text-xs text-slate-600 uppercase tracking-wider">минут</div>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-2 shadow-sm">
+                                        <div class="text-2xl font-extrabold text-gray-900" id="seconds">56</div>
+                                        <div class="text-xs text-slate-600 uppercase tracking-wider">секунд</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="mb-6">
+                                Как море принимает любые реки, так и наш фестиваль открыт для всех, кто готов творить, учиться и преодолевать границы.
+                            </p>
+                        </div>
+
+                        <!-- Предупреждение -->
+                        <div role="alert" class="mt-10 p-6 bg-gray-50 rounded-3xl border border-slate-200 flex items-start gap-4 shadow-sm">
+                            <div class="w-12 h-12 rounded-full bg-pink-50 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-exclamation text-pink-500 text-xl icon-soft-pulse"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-lg mb-1">Важно для участников</h3>
+                                <p class="text-slate-600 text-base">
+                                    Конкурсная программа рассчитана <strong>только на Дуэты и Коллективы</strong>. Сольные номера в данном фестивале участие не принимают.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Кнопка -->
+                        <div class="mt-6">
+                            <a href="#" class="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-semibold transition-all shadow-lg hover:shadow-blue-500/40">
+                                <i class="fa-solid fa-file-contract"></i>
+                                Положение о фестивале
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-pink-500 rounded-[2.5rem] opacity-20 group-hover:opacity-40 blur-lg transition duration-500"></div>
+                        <img src="/upload/landing_img/144A7596Арт.jpg"
+                             alt="Танцоры в белом"
+                             class="relative rounded-[2rem] shadow-2xl w-full h-auto object-cover aspect-4/3 transform transition duration-500 group-hover:scale-[1.01]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Программа -->
+        <section id="program" class="py-12 bg-gray-50 relative">
+            <span id="applications" class="absolute -top-24 left-0"></span>
+
+            <div class="container mx-auto px-6 max-w-5xl">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mt-2 mb-2 tracking-tight">Программа фестиваля</h2>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- День 1 -->
+                    <article class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col lg:flex-row gap-8 lg:items-center relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500/50 group-hover:bg-blue-600 transition-colors"></div>
+
+                        <div class="shrink-0 flex lg:flex-col items-center gap-3 lg:gap-1 lg:w-32 lg:text-center border-b lg:border-b-0 lg:border-r border-slate-100 pb-4 lg:pb-0 lg:pr-6">
+                            <span class="text-4xl font-extrabold text-blue-600 tracking-tighter">15</span>
+                            <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Мая</span>
+                        </div>
+
+                        <div class="flex-grow space-y-6">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xs">
+                                        <i class="fa-solid fa-user-check"></i>
+                                    </div>
+                                    <h4 class="text-2xl font-bold text-gray-900">Заезд участников</h4>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-slate-100 pt-6">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xs">
+                                        <i class="fa-solid fa-handshake"></i>
+                                    </div>
+                                    <h4 class="text-2xl font-bold text-gray-900">Круглый стол</h4>
+                                </div>
+                                <p class="text-slate-600 leading-relaxed mb-3 ml-9">
+                                    Встреча организаторов фестиваля с руководителями коллективов
+                                </p>
+                                <div class="ml-9">
+                                    <div class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-slate-50 text-slate-500 font-bold text-sm border border-slate-200">
+                                        <i class="fa-solid fa-check mr-2"></i> Вход свободный
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden lg:block lg:w-48"></div>
+                    </article>
+
+                    <!-- День 2-4 -->
+                    <article class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col lg:flex-row gap-8 lg:items-center relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-pink-500/50 group-hover:bg-pink-600 transition-colors"></div>
+
+                        <div class="shrink-0 flex lg:flex-col items-center gap-3 lg:gap-1 lg:w-32 lg:text-center border-b lg:border-b-0 lg:border-r border-slate-100 pb-4 lg:pb-0 lg:pr-6">
+                            <span class="text-4xl font-extrabold text-pink-600 tracking-tighter">16-19</span>
+                            <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Мая</span>
+                        </div>
+
+                        <div class="flex-grow">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 text-sm">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900">Школа инклюзивного танца</h3>
+                            </div>
+                            <p class="text-slate-600 leading-relaxed mb-4 lg:mb-0">
+                                Интенсив-погружение для танцоров, волонтеров и хореографов. Серия мастер-классов от ведущих педагогов.
+                            </p>
+
+                            <button onclick="toggleDetails(this)" class="mt-4 flex items-center gap-2 text-pink-600 hover:text-pink-700 font-medium text-sm transition cursor-pointer">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                                Подробнее
+                            </button>
+
+                            <div class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-4 p-6 bg-pink-50/50 rounded-2xl border border-pink-200/50">
+                                <div class="space-y-4 text-slate-600">
+                                    <p class="text-sm mb-4">
+                                        Школа инклюзивного танца - интенсивная программа танцевального роста инклюзивных коллективов...
+                                    </p>
+                                    <div>
+                                        <h5 class="font-bold text-gray-900 mb-2">Школа включает в себя:</h5>
+                                        <ul class="list-disc list-inside space-y-1 text-sm">
+                                            <li>ежедневные уроки и мастер-классы...</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-pink-100/50 rounded-xl p-4">
+                                        <p class="text-sm font-medium text-gray-900">
+                                            Каждый участник по итогам Школы награждается...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
+                            <img src="/upload/landing_img/ШколаИТ.jpg" alt="Школа инклюзивного танца" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
+                            <a href="#applications" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-pink-500/40 text-center text-lg">
+                                Подать заявку
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- День 5 -->
+                    <article class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col lg:flex-row gap-8 lg:items-center relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500/50 group-hover:bg-blue-600 transition-colors"></div>
+
+                        <div class="shrink-0 flex lg:flex-col items-center gap-3 lg:gap-1 lg:w-32 lg:text-center border-b lg:border-b-0 lg:border-r border-slate-100 pb-4 lg:pb-0 lg:pr-6">
+                            <span class="text-4xl font-extrabold text-blue-600 tracking-tighter">20</span>
+                            <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Мая</span>
+                        </div>
+
+                        <div class="flex-grow">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900">Парные соревнования</h3>
+                            </div>
+                            <p class="text-slate-600 leading-relaxed mb-4 lg:mb-0">
+                                Парные соревнования в формате «здесь и сейчас»...
+                            </p>
+
+                            <button onclick="toggleDetails(this)" class="mt-4 flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium text-sm transition cursor-pointer">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                                Подробнее
+                            </button>
+
+                            <div class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-4 p-6 bg-blue-50/50 rounded-2xl border border-blue-200/50">
+                                <div class="space-y-4 text-slate-600">
+                                    <div class="mb-4">
+                                        <h5 class="font-bold text-gray-900 mb-2">Место проведения:</h5>
+                                        <p class="text-sm mb-4">К участию допускаются инклюзивные пары...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
+                            <img src="/upload/landing_img/Парные.jpg" alt="Парные соревнования" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
+                            <a href="#applications" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-blue-500/40 text-center text-lg">
+                                Подать заявку
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- День 6 -->
+                    <article class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col lg:flex-row gap-8 lg:items-center relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-pink-500/50 group-hover:bg-pink-600 transition-colors"></div>
+
+                        <div class="shrink-0 flex lg:flex-col items-center gap-3 lg:gap-1 lg:w-32 lg:text-center border-b lg:border-b-0 lg:border-r border-slate-100 pb-4 lg:pb-0 lg:pr-6">
+                            <span class="text-4xl font-extrabold text-pink-600 tracking-tighter">21</span>
+                            <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Мая</span>
+                        </div>
+
+                        <div class="flex-grow">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 text-sm">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900">Конкурс по инклюзивной хореографии</h3>
+                            </div>
+                            <p class="text-slate-600 leading-relaxed mb-4 lg:mb-0">
+                                Главное событие фестиваля. Конкурс хореографии для инклюзивных дуэтов и коллективов.
+                            </p>
+                        </div>
+
+                        <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
+                            <img src="/upload/landing_img/Коллективы.jpg" alt="Конкурс по инклюзивной хореографии" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
+                            <a href="#applications" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 px-4 rounded-2xl transition-all shadow-lg hover:shadow-pink-500/40 text-center text-lg">
+                                Подать заявку
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- День 7 -->
+                    <article class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col lg:flex-row gap-8 lg:items-center relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-blue-500/50 group-hover:bg-blue-600 transition-colors"></div>
+
+                        <div class="shrink-0 flex lg:flex-col items-center gap-3 lg:gap-1 lg:w-32 lg:text-center border-b lg:border-b-0 lg:border-r border-slate-100 pb-4 lg:pb-0 lg:pr-6">
+                            <span class="text-4xl font-extrabold text-blue-600 tracking-tighter">22</span>
+                            <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Мая</span>
+                        </div>
+
+                        <div class="flex-grow">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-sm">
+                                    <i class="fa-solid fa-plane-departure"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900">Выезд участников</h3>
+                            </div>
+                        </div>
+                        <div class="hidden lg:block lg:w-48"></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея -->
+        <section id="gallery" class="py-12 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-extrabold text-center text-gray-900 mb-16 tracking-tight">Мгновения фестиваля</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="grid gap-6 h-fit">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="/upload/landing_img/ШколаИТ.jpg" alt="Школа инклюзивного танца">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="/upload/landing_img/Коллективы.jpg" alt="Танцевальные коллективы">
+                    </div>
+                    <div class="grid gap-6 h-fit">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="/upload/landing_img/00000251.JPG" alt="Фестивальные моменты">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="/upload/landing_img/СочиФест.jpg" alt="Фестиваль в Сочи">
+                    </div>
+                    <div class="grid gap-6 h-fit">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="/upload/landing_img/00000270.JPG" alt="Танцевальные эмоции">
+                        <img class="w-full rounded-3xl object-cover hover:opacity-90 transition duration-300 shadow-md" src="/upload/landing_img/240520_Пары_P5200428.jpg" alt="Парные танцы">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно для галереи -->
+    <div id="lightbox" class="lightbox hidden">
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <span class="lightbox-close">&times;</span>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript для лендинга -->
+<script>
+// Счетчик времени до фестиваля
+function updateCountdown() {
+    const festivalDate = new Date('2026-05-15T00:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = festivalDate - now;
+
+    if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        if (daysEl) daysEl.textContent = days;
+        if (hoursEl) hoursEl.textContent = hours;
+        if (minutesEl) minutesEl.textContent = minutes;
+        if (secondsEl) secondsEl.textContent = seconds;
+    }
+}
+
+// Аккордеоны для детальной информации
+function toggleDetails(button) {
+    const details = button.nextElementSibling;
+    const icon = button.querySelector('i');
+
+    if (details && details.classList.contains('hidden')) {
+        details.classList.remove('hidden');
+        details.style.maxHeight = details.scrollHeight + 'px';
+        if (icon) {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+        }
+    } else if (details) {
+        details.style.maxHeight = '0px';
+        if (icon) {
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        }
+        setTimeout(() => {
+            details.classList.add('hidden');
+        }, 300);
+    }
+}
+
+// Функции для галереи
+function openGallery(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (lightbox && lightboxImg && img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.remove('hidden');
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.classList.add('hidden');
+    }
+}
+
+// Инициализация при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    // Запуск счетчика
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Обработчики событий для галереи
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightbox = document.getElementById('lightbox');
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+});
+</script>
