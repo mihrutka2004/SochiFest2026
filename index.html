@@ -445,6 +445,71 @@
                         </div>
                     </article>
 
+                    <!-- 2.5. Образовательная программа (16-19 мая) -->
+                    <article class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col lg:flex-row gap-8 lg:items-center relative overflow-hidden">
+                        <!-- Индикатор -->
+                        <div class="absolute left-0 top-0 bottom-0 w-2 bg-brand-pink/50 group-hover:bg-brand-pink transition-colors"></div>
+
+                        <!-- Дата -->
+                        <div class="shrink-0 flex lg:flex-col items-center gap-3 lg:gap-1 lg:w-32 lg:text-center border-b lg:border-b-0 lg:border-r border-slate-100 pb-4 lg:pb-0 lg:pr-6">
+                            <span class="text-4xl font-extrabold text-brand-pink tracking-tighter">16-19</span>
+                            <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Мая</span>
+                        </div>
+
+                        <!-- Контент -->
+                        <div class="flex-grow">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink text-sm">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-brand-dark">Образовательная программа</h3>
+                            </div>
+                            <p class="text-slate-600 leading-relaxed mb-4 lg:mb-0">
+                                Комплексная программа для развития профессиональных навыков в области инклюзивного танца и хореографии.
+                            </p>
+
+                            <!-- Кнопка Подробнее -->
+                            <button onclick="toggleDetails(this)" class="mt-4 flex items-center gap-2 text-brand-pink hover:text-brand-pinkDark font-medium text-sm transition cursor-pointer">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                                Подробнее
+                            </button>
+
+                            <!-- Скрытая детальная информация -->
+                            <div class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-4 p-6 bg-brand-pink/5 rounded-2xl border border-brand-pink/20">
+                                <div class="space-y-4 text-slate-600">
+                                    <p class="text-sm mb-4">
+                                        Образовательная программа направлена на повышение квалификации специалистов, работающих с инклюзивными танцевальными коллективами. Программа сочетает теоретические знания и практические навыки.
+                                    </p>
+                                    <div>
+                                        <h5 class="font-bold text-brand-dark mb-2">Программа включает:</h5>
+                                        <ul class="list-disc list-inside space-y-1 text-sm">
+                                            <li>теоретические занятия по основам инклюзивного танца и адаптивной физической культуры</li>
+                                            <li>практические занятия по методике преподавания танцев для людей с инвалидностью</li>
+                                            <li>мастер-классы от экспертов в области инклюзивного образования</li>
+                                            <li>разработка индивидуальных образовательных программ для коллективов</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-brand-pink/10 rounded-xl p-4">
+                                        <p class="text-sm font-medium text-brand-dark">
+                                            Программа представляет собой итоговый очный модуль образовательного курса "Инклюзивный танец от А до Я".
+                                        </p>
+                                    </div>
+                                    <div class="space-y-2 text-sm">
+                                        <p>Программа доступна для педагогов, хореографов и специалистов, работающих в сфере инклюзивного образования - участников курса "Инклюзивный танец от А до Я"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Иллюстрация -->
+                        <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
+                            <img src="Семинар.JPG" alt="Семинар.JPG" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
+                            <button class="w-full bg-gray-400 text-white font-semibold py-3 px-4 rounded-2xl text-center text-lg cursor-not-allowed opacity-60" disabled>
+                                Для студентов образовательной программы
+                            </button>
+                        </div>
+                    </article>
+
                     <!-- 3. Импровизация (20 мая) -->
                     <article class="group bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col lg:flex-row gap-8 lg:items-center relative overflow-hidden">
                         <!-- Индикатор -->
