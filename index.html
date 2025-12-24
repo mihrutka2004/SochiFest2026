@@ -230,7 +230,7 @@
                     <!-- Плашки с информацией -->
                     <div class="flex flex-col gap-4 text-xl font-medium text-white/90">
                         <div class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all cursor-pointer">
-                            <i class="fa-regular fa-calendar text-brand-pink hover:text-brand-blue text-xl transition-colors"></i>
+                            <i class="fa-solid fa-calendar-days text-brand-pink hover:text-brand-blue text-xl transition-colors"></i>
                             <span>15 – 22 Мая 2026</span>
                         </div>
                         <div class="flex items-center gap-3 bg-white/10 px-5 py-3 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all cursor-pointer">
@@ -505,7 +505,7 @@
                         <div class="shrink-0 lg:w-48 flex flex-col items-center justify-center gap-4">
                             <img src="Семинар.JPG" alt="Семинар.JPG" class="w-full h-32 object-cover rounded-2xl shadow-md cursor-pointer hover:shadow-xl hover:scale-105 transition-all duration-300 gallery-image" onclick="openGallery(this)">
                             <div class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-slate-50 text-slate-500 font-bold text-sm border border-slate-200">
-                                Для студентов образовательной программы
+                                <i class="fa-solid fa-user mr-2"></i> Для студентов образовательной программы
                             </div>
                         </div>
                     </article>
@@ -1140,7 +1140,7 @@
                                 <i class="fa-solid fa-map-marker-alt text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
                                 <div>
                                     <h4 class="font-bold text-brand-dark mb-1">Почтовый адрес</h4>
-                                    <p class="text-slate-600">Адрес оргкомитета</p>
+                                    <p class="text-slate-600">109443, Москва, Волгоградский пр-кт, д. 145, корп.2, оф. 25</p>
                                 </div>
                             </div>
 
@@ -1148,7 +1148,7 @@
                                 <i class="fa-solid fa-globe text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
                                 <div>
                                     <h4 class="font-bold text-brand-dark mb-1">Официальный сайт</h4>
-                                    <a href="#" class="text-brand-blue hover:text-brand-blueDark transition">Сайт фестиваля</a>
+                                    <a href="https://inclusive-dance.ru" target="_blank" class="text-brand-blue hover:text-brand-blueDark transition">www.inclusive-dance.ru</a>
                                 </div>
                             </div>
 
@@ -1156,7 +1156,7 @@
                                 <i class="fa-solid fa-envelope text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
                                 <div>
                                     <h4 class="font-bold text-brand-dark mb-1">Электронная почта</h4>
-                                    <a href="#" class="text-brand-blue hover:text-brand-blueDark transition">Email для связи</a>
+                                    <a href="mailto:info@inclusive-dance.ru" class="text-brand-blue hover:text-brand-blueDark transition">info@inclusive-dance.ru</a>
                                 </div>
                             </div>
                         </div>
@@ -1166,7 +1166,7 @@
                                 <i class="fa-solid fa-phone text-brand-pink hover:text-brand-blue text-2xl mt-1 transition-colors cursor-pointer"></i>
                                 <div>
                                     <h4 class="font-bold text-brand-dark mb-1">Телефон (WhatsApp, Телеграм)</h4>
-                                    <a href="#" class="text-brand-pink hover:text-brand-pinkDark transition font-semibold">Телефон оргкомитета</a>
+                                    <a href="tel:+79264478292" class="text-brand-pink hover:text-brand-pinkDark transition font-semibold">+7 (926) 447-82-92</a>
                                 </div>
                             </div>
 
@@ -1174,7 +1174,7 @@
                                 <i class="fa-brands fa-vk text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
                                 <div>
                                     <h4 class="font-bold text-brand-dark mb-1">ВКонтакте</h4>
-                                    <a href="#" class="text-brand-blue hover:text-brand-blueDark transition">Страница ВКонтакте</a>
+                                    <a href="https://vk.com/inclusive.dance" target="_blank" class="text-brand-blue hover:text-brand-blueDark transition">https://vk.com/inclusive.dance</a>
                                 </div>
                             </div>
 
@@ -1182,7 +1182,7 @@
                                 <i class="fa-brands fa-telegram text-brand-blue hover:text-brand-pink text-2xl mt-1 transition-colors cursor-pointer"></i>
                                 <div>
                                     <h4 class="font-bold text-brand-dark mb-1">Телеграм</h4>
-                                    <a href="#" class="text-brand-blue hover:text-brand-blueDark transition">Канал в Telegram</a>
+                                    <a href="https://t.me/inclusivedance" target="_blank" class="text-brand-blue hover:text-brand-blueDark transition">https://t.me/inclusivedance</a>
                                 </div>
                             </div>
                         </div>
@@ -1192,63 +1192,27 @@
         </section>
     </main>
 
-    <!-- 10. Футер -->
-    <footer id="contacts" class="bg-brand-dark text-white pt-24 pb-12 rounded-t-[3rem] mt-12">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-16 mb-16">
-                <div>
-                    <h3 class="text-3xl font-bold mb-6 text-white tracking-tight">Инклюзив Дэнс Сочи</h3>
-                    <p class="mb-8 text-gray-400 leading-relaxed text-lg">Танец, объединяющий миры. Мы верим, что сцена доступна каждому, независимо от ограничений.</p>
-                    <div class="flex gap-4">
-                        <a href="#" aria-label="ВКонтакте" class="bg-white/10 hover:bg-brand-blue w-12 h-12 flex items-center justify-center rounded-full transition text-xl backdrop-blur-sm"><i class="fa-brands fa-vk"></i></a>
-                        <a href="#" aria-label="Telegram" class="bg-white/10 hover:bg-brand-blue w-12 h-12 flex items-center justify-center rounded-full transition text-xl backdrop-blur-sm"><i class="fa-brands fa-telegram"></i></a>
+        <!-- 10. Заключительная секция -->
+        <section class="py-8 bg-gradient-to-r from-brand-blue to-brand-pink">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-left">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">
+                            Инклюзив Дэнс
+                        </h2>
+                        <p class="text-lg md:text-xl text-white/90 leading-relaxed">
+                            Танец, объединяющий миры.<br>
+                            Мы верим, что сцена доступна каждому, независимо от ограничений.
+                        </p>
                     </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-8 text-gray-200 uppercase tracking-widest text-sm">Контакты</h3>
-                    <ul class="space-y-6">
-                        <li class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-pink flex items-center justify-center shrink-0 transition-colors cursor-pointer">
-                                <i class="fa-solid fa-phone text-brand-blue hover:text-white text-xl transition-colors"></i>
-                            </div>
-                            <div>
-                                <span class="block text-sm text-gray-500 mb-1">Горячая линия</span>
-                                <a href="tel:+79000000000" class="hover:text-brand-pink font-bold text-xl transition">+7 (900) 000-00-00</a>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-pink flex items-center justify-center shrink-0 transition-colors cursor-pointer">
-                                <i class="fa-solid fa-envelope text-brand-blue hover:text-white text-xl transition-colors"></i>
-                            </div>
-                            <div>
-                                <span class="block text-sm text-gray-500 mb-1">Email для заявок</span>
-                                <a href="mailto:hello@rhythm-heart.ru" class="hover:text-brand-pink font-medium transition text-lg">hello@rhythm-heart.ru</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold mb-8 text-gray-200 uppercase tracking-widest text-sm">Адрес</h3>
-                    <div class="flex items-start gap-4">
-                        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-map-pin text-brand-pink"></i>
-                        </div>
-                        <p class="text-gray-400 text-lg leading-relaxed">
-                            г. Сочи, пгт. Сириус<br>
-                            (Сочи Парк Отель)
+                    <div class="pt-6 border-t border-white/20">
+                        <p class="text-white/80 text-base font-medium text-right">
+                            Сделано с любовью к танцу и к людям
                         </p>
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-white/10 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
-                <p>&copy; 2026 Фестиваль «Инклюзив Дэнс».</p>
-                <p class="mt-2 md:mt-0">Сделано с любовью к танцу</p>
-            </div>
-        </div>
-    </footer>
+        </section>
 
 
 
