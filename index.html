@@ -196,7 +196,7 @@
     </style>
 </head>
 <body class="bg-brand-surface text-brand-dark font-sans leading-relaxed text-lg selection:bg-brand-blue selection:text-white">
-<div id="landing-wrapper" class="landing-scope">
+<div id="landing-wrapper" class="landing-scope relative">
     <!-- Ссылка для скринридеров -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:px-6 focus:py-4 focus:rounded-xl focus:shadow-2xl focus:text-brand-pink font-bold border-2 border-brand-pink">
         Перейти к основному контенту
@@ -204,20 +204,19 @@
 
     <main id="main-content">
         <!-- 2. Hero Section -->
-        <section class="relative w-full overflow-hidden min-h-[600px] flex items-center justify-center overflow-hidden" style="min-height: 600px; height: auto !important;">
+        <section class="relative w-full overflow-hidden flex items-center justify-center" style="min-height: 800px;">
     <!-- Фон -->
     <div class="absolute inset-0 z-0">
         <img src="https://inclusive-dance.ru/meropriyatiya/2026/Soch-26/Анонс-Шапка.jpg"
              alt="Анонс-Шапка.jpg"
-             class="absolute inset-0 w-full h-full object-cover z-0"
-             style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0 !important;">
+             class="absolute top-0 left-0 w-full h-full object-cover z-0">
         <!-- Современный градиент -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-brand-blueDark/40 to-brand-dark/80 mix-blend-multiply"></div>
         <div class="absolute inset-0 bg-black/20"></div>
     </div>
 
     <!-- Навигация -->
-    <nav class="absolute top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-sm border-b border-white/10 flex justify-between items-center px-6 py-4">
+    <nav class="absolute top-0 left-0 right-0 z-[9999] w-full bg-gradient-to-b from-black/60 to-transparent flex justify-between items-center px-6 py-6">
         <!-- Логотип -->
         <div class="text-white font-bold text-xl flex items-center gap-2">
             <i class="fa-solid fa-water"></i> Инклюзив Дэнс
