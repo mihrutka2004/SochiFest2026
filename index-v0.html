@@ -705,7 +705,7 @@
         </section>
 
         <!-- Предупреждение о заявках -->
-        <div class="mt-8 p-6 bg-gradient-to-r from-blue-50 to-pink-50 rounded-2xl border border-blue-100">
+        <div class="mt-8 p-6 md:p-8 bg-gradient-to-r from-blue-50 to-pink-50 rounded-[2.5rem] border border-blue-100 shadow-sm relative overflow-hidden">
             <div class="flex items-start gap-4">
                 <div class="w-12 h-12 rounded-xl bg-brand-pink/10 flex items-center justify-center shrink-0">
                     <i class="fa-solid fa-exclamation-triangle text-brand-pink text-xl hover:text-brand-pinkDark transition-colors cursor-pointer"></i>
@@ -958,5 +958,89 @@
         </section>
     </main>
 </div>
+<script>
+    // 1. Логика Аккордеонов (Подробнее / Стоимость / Взнос)
+    window.toggleDetails = function(button) {
+        // Ищем скрытый блок: он идет сразу после кнопки
+        const details = button.nextElementSibling;
+        const icon = button.querySelector('i');
+
+        if (!details) return;
+
+        // Если скрыт - показываем
+        if (details.classList.contains('hidden')) {
+            details.classList.remove('hidden');
+            // Небольшая задержка для анимации, если нужно, или просто показываем
+            if(icon) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        } else {
+            // Если открыт - скрываем
+            details.classList.add('hidden');
+            if(icon) {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    };
+
+    // 2. Счетчик времени
+    function updateCountdown() {
+        const festivalDate = new Date('2026-05-15T00:00:00').getTime();
+        const now = new Date().getTime();
+        const distance = festivalDate - now;
+        
+        const elements = {
+            days: document.getElementById('days'),
+            hours: document.getElementById('hours'),
+            minutes: document.getElementById('minutes'),
+            seconds: document.getElementById('seconds')
+        };
+
+        if (distance > 0 && elements.days) {
+            elements.days.textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+            elements.hours.textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            elements.minutes.textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            elements.seconds.textContent = Math.floor((distance % (1000 * 60)) / 1000);
+        }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 3. Галерея (Лайтбокс)
+    window.openGallery = function(img) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        if (lightbox && lightboxImg) {
+            lightboxImg.src = img.src;
+            lightbox.classList.remove('hidden');
+        }
+    };
+
+    // Закрытие галереи
+    document.addEventListener('click', function(e) {
+        const lightbox = document.getElementById('lightbox');
+        if (e.target.classList.contains('lightbox-close') || e.target === lightbox) {
+            lightbox.classList.add('hidden');
+        }
+    });
+    
+    // 4. Мобильное меню (Логика открытия)
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    
+    if(menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+    }
+    if(closeBtn && mobileMenu) {
+        closeBtn.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    }
+    // Закрытие меню при клике на ссылку
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+</script>
 </body>
 </html>
