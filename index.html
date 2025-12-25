@@ -159,6 +159,23 @@
             color: #00a1e3;
         }
 
+/* Типографика для восстановления Tailwind стилей после отключения preflight */
+.landing-scope {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    line-height: 1.5 !important;
+    color: #1d1d1f; /* Темно-серый цвет текста по умолчанию */
+}
+.landing-scope h1,
+.landing-scope h2,
+.landing-scope h3,
+.landing-scope h4 {
+    line-height: 1.2 !important; /* Для заголовков поплотнее */
+    margin-bottom: 0.75rem;
+}
+.landing-scope p {
+    margin-bottom: 1rem;
+}
+
 /* --- FORCE ICON FIX --- */
 /* Принудительно заставляем иконки использовать правильный шрифт, игнорируя внешние стили */
 .fa, .fa-brands, .fa-duotone, .fa-light, .fa-regular, .fa-solid, .fa-thin, .fas, .fab {
