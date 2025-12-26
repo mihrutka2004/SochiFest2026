@@ -312,15 +312,22 @@
                         </div>
 
                         <!-- Предупреждение (Apple Style Alert) -->
-                            <div role="alert" class="mt-10 p-6 bg-brand-surface rounded-3xl border border-slate-200 flex items-start gap-4 shadow-sm">
-                            <div class="w-12 h-12 rounded-full bg-brand-pink/10 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-exclamation text-brand-pink text-xl icon-soft-pulse"></i>
-                            </div>
+                            <div role="alert" class="mt-10 p-6 bg-brand-surface rounded-3xl border border-slate-200 shadow-sm">
                             <div>
-                                <h3 class="font-bold text-brand-dark text-lg mb-1">Важно для участников</h3>
-                                <p class="text-slate-600 text-base">
-                                    Конкурсная программа рассчитана <strong>только на Дуэты и Коллективы</strong>. Сольные номера в данном фестивале участие не принимают.
+                                <p class="text-slate-600 text-base mb-4">
+                                    Принять участие в мероприятиях фестиваля могут инклюзивные <strong>танцевальные дуэты и коллективы</strong> (возрастная категория от 3-х лет и старше), а также <strong>специалисты, работающие в области инклюзивного танца и танцевальной реабилитации</strong>.
                                 </p>
+                                <button onclick="toggleDetails(this)" class="flex items-center gap-2 text-brand-pink hover:text-brand-pinkDark font-bold text-sm transition cursor-pointer">
+                                    <div class="w-8 h-8 rounded-full bg-brand-pink/10 flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-exclamation text-brand-pink text-lg icon-soft-pulse"></i>
+                                    </div>
+                                    Важно для участников
+                                </button>
+                                <div class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-4 p-4 bg-brand-pink/5 rounded-2xl border border-brand-pink/20">
+                                    <p class="text-slate-600 text-sm">
+                                        Конкурсная программа рассчитана только на Дуэты и Коллективы. <b class="text-brand-pink">Сольные номера в данном фестивале участие не принимают.</b>
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -484,7 +491,7 @@
                                 <h3 class="text-2xl font-bold text-brand-dark">Образовательная программа</h3>
                             </div>
                             <p class="text-slate-600 leading-relaxed mb-4 lg:mb-0">
-                                Комплексная программа для развития профессиональных навыков в области инклюзивного танца и хореографии.
+                                Итоговый модуль образовательной программы повышения квалификации «<strong>Инклюзивный танец от А до Я</strong>».
                             </p>
 
                             <!-- Кнопка Подробнее -->
@@ -497,24 +504,25 @@
                             <div class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-4 p-6 bg-brand-blue/5 rounded-2xl border border-brand-blue/20">
                                 <div class="space-y-4 text-slate-600">
                                     <p class="text-sm mb-4">
-                                        Образовательная программа направлена на повышение квалификации специалистов, работающих с инклюзивными танцевальными коллективами. Программа сочетает теоретические знания и практические навыки.
+                                        Образовательный модуль представляет собой завершающий этап курса повышения квалификации для специалистов. Участники, прошедшие обучение на онлайн и офлайн модулях, собираются для итоговой очной практики, для обмена опытом и углубленного освоения методов работы.
                                     </p>
                                     <div>
-                                        <h5 class="font-bold text-brand-dark mb-2">Программа включает:</h5>
+                                        <h5 class="font-bold text-brand-dark mb-2">В рамках сессии проводятся:</h5>
                                         <ul class="list-disc list-inside space-y-1 text-sm">
-                                            <li>теоретические занятия по основам инклюзивного танца и адаптивной физической культуры</li>
-                                            <li>практические занятия по методике преподавания танцев для людей с инвалидностью</li>
-                                            <li>мастер-классы от экспертов в области инклюзивного образования</li>
-                                            <li>разработка индивидуальных образовательных программ для коллективов</li>
+                                            <li>мастер-классы</li>
+                                            <li>семинары</li>
+                                            <li>индивидуальные и групповые разборы</li>
+                                            <li>работа с экспертами</li>
+                                            <li>демонстрация творческих работ участников</li>
                                         </ul>
                                     </div>
                                     <div class="bg-brand-blue/10 rounded-xl p-4">
                                         <p class="text-sm font-medium text-brand-dark">
-                                            Программа представляет собой итоговый очный модуль образовательного курса "Инклюзивный танец от А до Я".
+                                            Участие в модуле <b>бесплатно</b> для специалистов, прошедших конкурсный отбор в программу <b>«Инклюзивный танец от&nbsp;А&nbsp;до&nbsp;Я»</b>.
                                         </p>
                                     </div>
                                     <div class="space-y-2 text-sm">
-                                        <p>Программа доступна для педагогов, хореографов и специалистов, работающих в сфере инклюзивного образования - участников курса "Инклюзивный танец от А до Я"</p>
+                                        <p><a href="https://oduhotvorenie.com/delaem-eto/seminary-dlya-pedagogov/progr-inklyuz-tanets-ot-a-do-ya" target="_blank" class="text-brand-blue hover:text-brand-blueDark underline transition text-center block">Программа курса повышения квалификации <br>«Инклюзивный танец от А до Я»</a></p>
                                     </div>
                                 </div>
                             </div>
