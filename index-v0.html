@@ -852,13 +852,16 @@
                                 Наш отель
                             </button>
 
-                            <div class="hidden overflow-hidden transition-all duration-300 ease-in-out mt-4 p-6 bg-brand-surface rounded-2xl border border-brand-blue/20">
-                                <div class="grid md:grid-cols-2 gap-8 items-center">
-                                    <div class="order-2 md:order-1">
+                            <div class="hidden overflow-y-auto transition-all duration-300 ease-in-out mt-4 p-6 bg-brand-surface rounded-2xl border border-brand-blue/20" style="max-height: 80vh;">
+                                <p class="mb-6">
+                                    <span class="text-lg font-bold text-brand-dark">Официальный отель размещения</span>
+                                </p>
+                                <div class="grid md:grid-cols-2 gap-8 items-start">
+                                    <div class="order-1">
                                         <div class="relative rounded-2xl overflow-hidden shadow-xl">
                                             <img src="https://inclusive-dance.ru/meropriyatiya/2026/Sochi-26/hotel-00.jpeg"
                                                  alt="hotel-00.jpeg"
-                                                 class="w-full h-auto object-cover transform hover:scale-105 transition duration-500">
+                                                 class="w-full h-auto object-cover transform hover:scale-105 transition duration-500 max-w-full">
                                         </div>
                                         <div class="mt-6 grid grid-cols-3 gap-3">
                                             <div class="bg-white p-3 rounded-xl text-center shadow-sm hover:shadow-md transition-all cursor-pointer">
@@ -875,24 +878,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="order-1 md:order-2">
-                                        <div class="space-y-4 text-slate-600 text-base leading-relaxed mt-8">
-                                            <p>
-                                                <span class="text-lg font-bold text-brand-dark">Официальный отель размещения.</span><br>
-                                                Здесь проживают все иногородние участники. <br>Это гарантирует безопасность, доступную среду и удобную логистику.
-                                            </p>
-                                            <p>
-                                                Отель расположен в пешей доступности от Черного моря, прекрасной прогулочной Имеретинской набережной, Олимпийского парка и парка аттракционов «Сочи Парк». <br>На территории отеля – подогреваемый круглогодичный открытый бассейн, кафе и рестораны, магазины, аптеки, центр здоровья, детские игровые зоны. <br>От отеля до аэропорта и ж/д вокзала «Адлер» – 10 минут на машине. В пешей доступности – ж/д станция «Имеретинский курорт».
-                                            </p>
-                                        </div>
-                                        <div class="mt-6 p-4 bg-blue-50/50 rounded-xl border border-blue-100 flex gap-3 items-start hover:bg-pink-50/50 hover:border-pink-100 transition-all cursor-pointer">
-                                            <i class="fa-solid fa-building text-brand-blue hover:text-brand-pink mt-1 transition-colors"></i>
-                                            <div>
-                                                <h4 class="font-bold text-brand-blue">Сочи Парк Отель</h4>
-                                                <p class="text-sm text-slate-600 mt-1">г. Сочи, пгт. Сириус</p>
-                                            </div>
+                                    <div class="order-2">
+                                        <div class="space-y-4 text-slate-600 text-base leading-relaxed">
+                                            <p class="mt-0">Отель расположен в пешей доступности от Черного моря, прекрасной прогулочной Имеретинской набережной, Олимпийского парка и парка аттракционов «Сочи Парк». <br>На территории отеля – подогреваемый круглогодичный открытый бассейн, кафе и рестораны, магазины, аптеки, центр здоровья, детские игровые зоны. <br>От отеля до аэропорта и ж/д вокзала «Адлер» – 10 минут на машине. В пешей доступности – ж/д станция «Имеретинский курорт».</p>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
                                 </div>
                             </div>
                         </div>
@@ -974,7 +966,7 @@
                                 <li>проживание в номере категории «Стандарт»;</li>
                                 <li>полный пансион - завтрак, обед и ужин «шведский стол»;</li>
                                 <li>трансфер до мероприятий и обратно (кроме трансферов в аэропорты и на вокзалы);</li>
-                                <li>волонтерское сопровождение на мероприятиях.</li>
+                                <li>сопровождение на мероприятиях.</li>
                             </ul>
                         </div>
                     </div>
@@ -988,10 +980,10 @@
                             <div class="space-y-4">
                                 <h3 class="text-xl font-bold text-brand-dark group-hover:text-brand-blue transition-colors">Трансферы и логистика</h3>
                                 <div class="space-y-3 text-slate-600 leading-relaxed">
-                                    <p>Трансфер от аэропорта или вокзала и обратно коллективы обеспечивают <span class="font-semibold text-brand-dark">самостоятельно</span>. Если участникам нужна помощь в организации трансферов, можно обратиться в Оргкомитет фестиваля.</p>
+                                    <p><b>Трансфер от аэропорта или вокзала и обратно коллективы обеспечивают самостоятельно</b>. Если участникам нужна помощь в организации трансферов, можно обратиться в Оргкомитет фестиваля.</p>
                                     <p class="flex items-start gap-2">
                                         <i class="fa-solid fa-train text-brand-blue mt-1 text-sm"></i>
-                                        <span>Для тех, кто добирается до Сочи <span class="font-semibold text-brand-dark">поездом</span>, обращаем внимание, что ближайший вокзал к отелю – <span class="font-semibold text-brand-pink">железнодорожный вокзал Адлера</span>.</span>
+                                        <span><u><b>Для тех, кто добирается до Сочи поездом</b></u>, обращаем внимание, что ближайший вокзал к отелю – <span class="font-semibold text-brand-pink">железнодорожный вокзал Адлера</span>.</span>
                                     </p>
                                 </div>
                             </div>
